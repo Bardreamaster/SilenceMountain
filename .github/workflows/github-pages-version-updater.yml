@@ -25,7 +25,7 @@ on:
 
 jobs:
   build-test:
-    if: ${{ github.repository == 'MrGreensWorkshop/MrGreen-JekyllTheme' }}
+    if: ${{ github.repository == 'Bardreamaster/SilenceMountain' }}
     runs-on: ubuntu-latest
     env: # $BUNDLE_GEMFILE must be set at the job level, so it is set for all steps
       BUNDLE_GEMFILE: ${{ github.workspace }}/Gemfile
@@ -54,4 +54,3 @@ jobs:
           PR_TEMPLATE: "#### About pull request\r\n - To get more insight, please check the related issue #%d.\r\n\r\n#### What's changed to accomplish [problem / feature] described in issue\r\n - %s \r\n\r\nThis PR is generated automatically."
           ISSUE_TEMPLATE_OK: "#### Bump Up github-pages version on Gemfile.\r\n\r\nThis issue is generated automatically."
           ISSUE_TEMPLATE_NG: "#### After bumping up github-pages version, build has failed.\r\n\r\nThis issue is generated automatically.\r\n\r\n%s"
-

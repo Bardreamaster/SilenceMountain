@@ -9,9 +9,9 @@ title: 使用 Git 作为管理工具的软件开发指南
 # multiple category is not supported
 category: auto generated
 # multiple tag entries are possible
-tags: [jekyll, example post]
+tags: [git, develop, coding]
 # thumbnail image for post
-img: ":post_pic1.jpg"
+img: ""
 # disable comments on this page
 comments_disable: true
 

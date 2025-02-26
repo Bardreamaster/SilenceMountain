@@ -153,6 +153,11 @@ about:
   button_name: About
   email_title: email
 
+cv:
+  title: Curriculum Vitae
+  button_name: Curriculum Vitae
+  download_button: Download CV
+
 # for links layout
 links:
   title: Links

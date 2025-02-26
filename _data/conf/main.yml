@@ -197,6 +197,8 @@ side_and_top_nav_buttons:
     icon: "fa fa-link"
   - about:
     icon: "fa fa-user-o"
+  - cv:
+    icon: "fa fa-user-o"
 
 # side nav toggle feature
 # when side nav is not visible and if you click top nav toggle button, side nav slides from left to right (disables top nav buttons)
@@ -300,7 +302,7 @@ meta:
   schema_markup_post_add_postbody: true
   schema_markup_logo_img: /assets/img/favicons/apple-touch-icon.png
   schema_markup_about_img: /assets/img/about/about.jpg
-  schema_markup_default_meta_img: /assets/img/home/home-heading.jpg
+  schema_markup_default_meta_img: /assets/img/home/heading_0.jpg
   mobile_app: true
   android_mobile_app: true
   ios_mobile_app: true

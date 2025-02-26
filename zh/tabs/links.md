@@ -46,49 +46,44 @@ page_data:
 
   # To change order of the Categories, simply change order. (you don't need to change list order.)
   category:
-    - title: "JekyII / Liquid"
-      type: id_jekyiiliquid
-      color: "gray"
-    - title: "网页设计"
-      type: id_webdesign
-      color: "#F4A273"
-    - title: "编程"
-      type: id_programming
-      color: "#62b462"
+    - title: "我参与的"
+      type: my
+      color: "#8b3cfd"
+
+    - title: "机器人"
+      type: robotics
+      color: "#1da373"
+
+    - title: "友情链接"
+      type: friend
+      color: "#e43f5c"
 
   list:
-    -
-    # programming
-    - type: id_programming
-      title: "Stack OverFlow"
-      url: "https://stackoverflow.com/"
-      info: "Stack Overflow是一个为专业和热情的程序员提供问答的网站。"
+    - type: my
+      title: "ROS 2 中文文档"
+      url: "http://ros2docs.robook.org"
+      info: "ROS 2 中文文档。"
+    - type: my
+      title: Robook
+      url: "http://robook.org"
+      info: "Robook 机器人手册。"
 
-    # jekyiiliquid
-    - type: id_jekyiiliquid
-      title: "Jekyll"
-      url: "https://jekyllrb.com/"
-      info: "将纯文本转换成静态网站和博客。"
-    - type: id_jekyiiliquid
-      title: "Jekyll小册子"
-      url: "https://cloudcannon.com/community/jekyll-cheat-sheet/"
-      info: "要记住的Jekyll变量和过滤器非常多，要把它们全部记在脑子里可能很困难。这张小册子可以作为Jekyll所有功能的快速参考。"
-    - type: id_jekyiiliquid
-      title: "对于设计师来说的Liquid"
-      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Designers"
-      info: "面向设计师的Liquid GitHub wiki"
-    - type: id_jekyiiliquid
-      title: "面向程序员的Liquid"
-      url: "https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers"
-      info: "为程序员提供的Liquid的GitHub wiki"
-    - type: id_jekyiiliquid
-      title: "Liquid参考资料"
-      url: "https://shopify.dev/api/liquid/"
-      info: "Liquid是Shopify创建的一种模板语言，用Ruby编写。它可以作为一个开源项目在GitHub上使用。"
+    - type: robotics
+      title: "ROS 2 中文文档"
+      url: "http://ros2docs.robook.org"
+      info: "ROS 2 中文文档。"
+    - type: robotics
+      title: Robook
+      url: "http://robook.org"
+      info: "Robook 机器人手册。"
 
-    # webdesign
-    - type: id_webdesign
-      title: "W3Schools"
-      url: "https://www.w3schools.com/"
-      info: "W3Schools提供所有主要网络语言的免费在线教程、参考和练习。它涵盖了流行的主题，如HTML、CSS、JavaScript、Python、SQL和Java。"
+    - type: friend
+      title: "Cunxi Dai"
+      url: "https://cunxid.github.io/"
+      info: "Cunxi Dai"
+    - type: friend
+      title: "南方科技大学"
+      url: "https://www.sustech.edu.cn/"
+      info: "南方科技大学"
+
 ---

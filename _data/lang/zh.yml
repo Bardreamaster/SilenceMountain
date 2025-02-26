@@ -154,6 +154,11 @@ about:
   button_name: 关于
   email_title: 电子邮件
 
+cv:
+  title: 简历
+  button_name: 简历
+  download_button: 下载简历
+
 # for links layout
 links:
   title: 链接

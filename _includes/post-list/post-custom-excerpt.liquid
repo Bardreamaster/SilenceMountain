@@ -4,6 +4,10 @@
   Licensed under MIT
 {%-endcomment-%}
 
+
+{%- include multi_lng/get-lng-by-url.liquid url=include.post_url -%}
+{%- assign lng = get_lng -%}
+
 {%- if site.data.conf.posts.excerpt_end_separator == nil or site.data.conf.posts.excerpt_end_separator == empty-%}
   {%- assign post_info = include.content -%}
 {%- else -%}
@@ -23,4 +27,10 @@
   {%- assign subtitle = post_info -%}
 {%- endif -%}
 
-{%- assign title_sub = subtitle | strip_html | split: " " | join: " " | truncatewords: word_count -%}
+{%- assign word_count = 25 -%}
+{%- assign char_count = 150 -%}
+{%- if lng == "zh" -%}
+  {%- assign title_sub = subtitle | strip_html | truncate: char_count -%}
+{%- else -%}
+  {%- assign title_sub = subtitle | strip_html | split: " " | join: " " | truncatewords: word_count -%}
+{%- endif -%}

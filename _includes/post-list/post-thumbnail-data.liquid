@@ -9,7 +9,7 @@
 {%- assign max_width = nil -%}
 {%- assign title_sub = nil -%}
 
-{%- if site.data.conf.posts.thumbnail_img and include.post.img -%}
+{%- if site.data.conf.posts.thumbnail_img and include.post.img and include.post.img != "" -%}
   {%- assign image = include.post.img -%}
 {%- else -%}
   {%- if site.data.conf.posts.thumbnail_img_fill != true -%}

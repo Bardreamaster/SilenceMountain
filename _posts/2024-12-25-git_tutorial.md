@@ -11,7 +11,7 @@ category: auto generated
 # multiple tag entries are possible
 tags: [git, develop, coding]
 # thumbnail image for post
-img: ""
+img: "/assets/img/posts/git-model.png"
 # disable comments on this page
 comments_disable: true
 
@@ -221,7 +221,8 @@ date: 2024-12-25 11:32:53 +0900
 
 一个完整且理想的大型仓库的 git graph 是这样的：
 
-![[../../assets/images/git_graph_full.png]]
+![git-flow](/assets/img/posts/git-model.png)
+
 这张图片意味着：
 
 - `master`分支上只含有关键的、重要的版本。
@@ -230,7 +231,9 @@ date: 2024-12-25 11:32:53 +0900
 
 在大多数中小型项目中，是几乎用不到这样完整的开发流的，一般，上述模型会被简化为只有两个主要部份：
 
-![[two_branch_graph.png]]
+- 维护进展的主分支
+- 正在开发的各个功能、测试、修复等分支
+
 那么开发时对每个分支的定义将变为：（不要关注branch的名字，关注它的作用，在不同组织、机构、公司命名可能有各自的习惯，但是作用是基本相同的。）
 
 - 一个分支用于维护已经开发好的所有功能，来自开发中的各种 feature 都只能被 merge 进入此分支。此分支可能会叫做 `master`或者`develop`或某个特殊的项目名称`project_name`.后续我们暂时称为`master`
@@ -307,7 +310,7 @@ commit message 必须简短明确，不要夹杂语义不明或重复性、含�
 - `prefix/your_name/usage`: 同时需要在前缀中加上你（开发者）的名字，明确分支所属权，例如: `feature/changshan/socket`
 - 如果某个代码仓库包含多个子项目、子模块，或者多个开发的方向，则需要指名正在开发的子项目。例如存在某个叫做 `fire` 的子项目，那么为它开发 `feature` 的分支应当命名为 `feature/fire/<the-feature-name>`
 
-#### [[versioning|版本控制]]
+#### versioning
 
 为了了解和标识软件的开发进展，有时候我们为代码打上 tag，标识当前的软件版本，版本的定义需遵循如下的规则： [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
@@ -331,11 +334,11 @@ Changelog 用来记录代码变更的情况，它的使用 遵循： [Keep A Cha
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
   - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
 
-
 ### 其它有关需求传送门
 
 如果本文中的内容你已全部理解掌握，仍然不能满足你的开发需求，那么说明你应该已经是一名具有搜索和学习能力的开发者了。这里提供了一些常见的进阶需求可能的技术方案或工具，你可以根据提供的链接或关键词自行搜索有关的资料。
 
+- [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 - 将某个或某些已有的 commit 应用到指定的地方
   `git cherry-pick`: <https://git-scm.com/docs/git-cherry-pick>
 - 利用git在commit前进行一些自动化检查和修改的工具

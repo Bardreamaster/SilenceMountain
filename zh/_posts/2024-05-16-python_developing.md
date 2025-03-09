@@ -38,10 +38,7 @@ date: 2024-05-16 11:32:53 +0900
 # to disable this page, simply set published: false or delete this file
 #published: false
 ---
-
-##
-
-### Overview
+## Overview
 
 开发一些带有 logging 的 python 模块时， 我们希望能够用一些简单的办法在模块中随意的调用 logging， 避免为每个子模块反复初始化不同的记录策略。同时，当我们将开发好的模块继承在其他项目中时，或者将模块提供给其他开发者作为他们项目的一部分使用时，最好能够确保我们开发的模块内部的 logger 能够按照其他开发者的目的和意图方便地变更记录策略。结合 [Python logging HOWTO](https://docs.python.org/3/howto/logging.html#configuring-logging-for-a-library) 中的阐述和开发经验，我尝试使用这样一种结构使得 logging 在模块中的使用方便起来。
 
@@ -52,7 +49,7 @@ date: 2024-05-16 11:32:53 +0900
 1. 你开发的模块需要 logging 作为日志或相关信息的解决方案。
 2. 你不希望使用你的模块的其他开发者在未经显式地配置 logging 记录策略时就主动将一些信息强制打印出来或者记录在根记录器上。
 
-### Usage
+## Usage
 
 假定我们创建了一个叫做 `parent_package` 并且包含 `sub_module`的包. 文件结构如下：
 

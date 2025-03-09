@@ -38,10 +38,7 @@ date: 2024-12-25 11:32:53 +0900
 # to disable this page, simply set published: false or delete this file
 #published: false
 ---
-
-## 使用 Git 作为管理工具的软件开发指南
-
-在软件开发的过程中，不可避免的会遇到需要版本管理的场景，Git 就是一种用来为代码类文件做版本管理的软件。尽管除此之外它还有其它作用，不过，本节将专注在介绍那些使用 Git 作为代码管理工具的软件在开发过程中的**通用工作流**。比如 GitHub 上的各种开源项目，或者某些项目、公司内部的开发项目。本节将要介绍的工作流会以 GitLab 平台为样例，介绍一种最常见、最基础最通用的工作流，在其它平台或工具下也具有类似的流程顺序，只是对应的操作名称、工具有差异。
+在软件开发的过程中，不可避免的会遇到需要版本管理的场景，Git 就是一种用来为代码类文件做版本管理的软件。尽管除此之外它还有其它作用，不过，本节将专注在介绍那些使用 Git 作为代码管理工具的软件在开发过程中的**通用工作流**。比如 GitHub 上的各种开源项目，或者某些组织、公司内部的开发项目的通用工作流。本节将要介绍的工作流会以 GitLab 平台为样例，介绍一种最常见、最基础最通用的工作流，在其它平台或工具下也具有类似的流程顺序，只是对应的操作名称、工具有差异。
 
 此外，本指南面向对以下这些要素中的一项或多项有需求的人群，如果这些要素**全都不在**你的需求范围内，那么你不是本指南的受众：代码管理、版本管理、代码协作、软件开发、Git、开发流程、项目维护。
 
@@ -111,7 +108,7 @@ date: 2024-12-25 11:32:53 +0900
   为了显式地告诉 Git 哪些是它不应该（直接）管理的文件，可以使用一些功能或工具：
   - `.gitignore`
     在 git 仓库下放置这个文件，在其中填写需要被 git 忽略的文件名所满足的条件之后，除非强制要求 git 记录，否则 git 不会追踪此文件中提及的所有文件。
-  - [[#git-lfs|git-lfs]]
+  - git-lfs
     对于一些大型文件，不经常变更版本，偶尔需要迭代的文件，例如文档中的图片，可以使用 [git-lfs](https://git-lfs.com/) 管理。
 
 #### 作出改动
@@ -122,7 +119,7 @@ date: 2024-12-25 11:32:53 +0900
   git pull
   ```
 
-- 将文件标记为准备记录它的快照：
+- 将文件标记为准备记录它的变更：
 
   ```bash
   git add <file-name>
@@ -247,22 +244,39 @@ date: 2024-12-25 11:32:53 +0900
 本小节从 developer 的视角，阐述如果你想加入某个项目的开发，最基本的工作流是什么样子的。
 
 0. Clone 源码至本地
-  使用`git clone` 将需要开发的代码拉取到本地。然后配置自己的git个人信息。
+
+    使用`git clone` 将需要开发的代码拉取到本地。然后配置自己的git个人信息。
+
 1. 在新分支中开发
-  先使用`git switch`切换到你想要开发的分支上，一般来说这个分支是`master`。然后使用`git checkout -b <new-branch-name>`从你想开发的分支上创建一个新的分支出来，记得满足项目所需的分支名命名规则。
+
+    先使用`git switch`切换到你想要开发的分支上，一般来说这个分支是`master`。然后使用`git checkout -b <new-branch-name>`从你想开发的分支上创建一个新的分支出来，记得满足项目所需的分支名命名规则。
+
 2. 进行改动并测试
-  在这个分支上完成一些独立且完整的功能开发，开发完成后进行测试。
-  请记得遵守自己开发语言的 coding style 以及其它可能的代码规范.
+
+    在这个分支上完成一些独立且完整的功能开发，开发完成后进行测试。
+
+    请记得遵守自己开发语言的 coding style 以及其它可能的代码规范.
+
 3. 提交更改
-  将每个完整独立的功能使用一个 commit 提交。如果在开发过程中混杂了一些临时的 commit，请使用 `git rebase`整理自己的提交记录，确保每个 commit 完整且独立，并且使用了[[#良好的 commit message]]或遵守项目的 commit message 要求。
-  此外，对于具体的项目，可能还需要更新[[#CHANGELOG]]、文档或者其它文件。
+
+    将每个完整独立的功能使用一个 commit 提交。如果在开发过程中混杂了一些临时的 commit，请使用 `git rebase`整理自己的提交记录，确保每个 commit 完整且独立，并且使用了[良好的 commit message](#良好的-commit-message)或遵守项目的 commit message 要求。
+
+    此外，对于具体的项目，可能还需要更新[CHANGELOG](#changelog)、文档或者其它文件。
+
 4. 推送到远端
-  使用`git push`将开发完成的代码推送到远端。
-  提出 Merge Request 或 Pull Request 之前，一般需要确保分支已经 rebase 至目标分支的最新情况，来保持线性的开发历史。
+
+    使用`git push`将开发完成的代码推送到远端。
+
+    提出 Merge Request 或 Pull Request 之前，一般需要确保分支已经 rebase 至目标分支的最新情况，来保持线性的开发历史。
+
 5. 提出 Merge Request 或 Pull Request
-  在对应的代码平台上，提交MR或者PR。按照项目的要求填写清楚信息，选择好项目指定的 tag。将reviewer修改为仓库指定的人选或者maintainer。如果MR已经准备完成，assign项目要求的人员或者maintainer；如果尚未完全准备好被review，assign你自己。
-6. 等待服务器的自动化检查流程运行完毕，如果某些必要的自动化检查未通过，请按照未通过的原因修改自己的代码。重复2-4步直至可以动过全部必要的自动化检查。
-  一般这些自动化检查会显示为一个红色或绿色的标识状态的图标。可能会叫做CI/CD，pipeline，action等。
+
+    在对应的代码平台上，提交MR或者PR。按照项目的要求填写清楚信息，选择好项目指定的 tag。将reviewer修改为仓库指定的人选或者maintainer。如果MR已经准备完成，assign项目要求的人员或者maintainer；如果尚未完全准备好被review，assign你自己。
+
+6. 等待服务器的自动化检查流程运行完毕，如果某些必要的自动化检查未通过，请按照未通过的原因修改自己的代码。重复2-4步直至可以通过全部必要的自动化检查。
+
+    一般这些自动化检查会显示为一个红色或绿色的标识状态的图标。可能会叫做CI/CD，pipeline，action等。
+
 7. 等待 reviewer 给出反馈，如果有需要改动的地方，根据意见重复2-4步，改动完成后回复提出意见的人，清楚地表明已经完成修改，直至reviewer认为没有问题。
 8. 等待PR或MR被合并。一次单一的开发就完成了。
 9. 继续使用项目，在发现有问题时，提交详细的问题描述至 issue 区。或者继续完成maintainer指派给你的开发任务。
@@ -273,18 +287,29 @@ date: 2024-12-25 11:32:53 +0900
 
 0. 确保你维护的项目已经为开发者提供了明确的指南，来指引正确地他们向你维护的项目提交符合你内心要求的代码。
 1. 为你的项目设置必要的自动化检查流程。
-  对于普通的提交，这些自动化检查可能会包括：对代码的静态检查，对文本、代码的格式、拼写检查，对某些代码的可编译性检查，对有需求的信息提供与否的检查，代码的测试、分支内容是否最新。
-  对于合并后、打上tag的提交，这些自动化流程可能会包括：自动关闭有关联的 issue 或其它外部平台的资源，自动发布有关代码或构建后的产物至需要的目的地，自动更新某些描述、文档、运行中软件的版本等。
+
+    对于普通的提交，这些自动化检查可能会包括：对代码的静态检查，对文本、代码的格式、拼写检查，对某些代码的可编译性检查，对有需求的信息提供与否的检查，代码的测试、分支内容是否最新。
+
+    对于合并后、打上tag的提交，这些自动化流程可能会包括：自动关闭有关联的 issue 或其它外部平台的资源，自动发布有关代码或构建后的产物至需要的目的地，自动更新某些描述、文档、运行中软件的版本等。
+
 2. 等待新接收到的PR或MR所有自动化检查通过。
-3. 对需要 review 的代码分配合理的 reviewer （小型项目一般就是你自己），让他检查所有需要人工检查的内容。比如：此问题的解决是否必要，目标分支是否正确，代码实现是否正确高效，是否提供了必要的注释或说明 ，是否出现了不应当出现的文本内容（有侮辱性的词汇，有风险的实现等）。
-  检查后需要指引开发者完成有关修复，直至没有问题。
-4. 合并分支至目标分支 。合并时可能需要注意：是否需要将本次 MR 或 PR 中所有的 commit 都合并成一个 commit 再合并，是否需要产生一个merge commit，是否需要自动将分支 rebase 至最新。
+3. 对需要 review 的代码分配合理的 reviewer （小型项目一般就是你自己）
+
+    让他检查所有需要人工检查的内容。比如：此问题的解决是否必要，目标分支是否正确，代码实现是否正确高效，是否提供了必要的注释或说明 ，是否出现了不应当出现的文本内容（有侮辱性的词汇，有风险的实现等）。
+
+    检查后需要指引开发者完成有关修复，直至没有问题。
+
+4. 合并分支至目标分支。
+
+    合并时可能需要注意：是否需要将本次 MR 或 PR 中所有的 commit 都合并成一个 commit 再合并，是否需要产生一个merge commit，是否需要自动将分支 rebase 至最新。
+
 5. 及时根据项目情况，更新：
-  1. 开发指南和有关文档
-  2. 关闭已解决、不需要解决的 issue
-  3. 为 issue 分配合适的开发者
-  4. 检查 MR 或 PR 的进展
-  5. 配置必要的自动检查流程
+
+    1. 开发指南和有关文档
+    2. 关闭已解决、不需要解决的 issue
+    3. 为 issue 分配合适的开发者
+    4. 检查 MR 或 PR 的进展
+    5. 配置必要的自动检查流程
 
 ### 通用开发规范
 
@@ -292,9 +317,7 @@ date: 2024-12-25 11:32:53 +0900
 
 #### 良好的 commit message
 
-commit message 必须简短明确，不要夹杂语义不明或重复性、含糊性的表述。请参考以下链接。
-
-> https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages
+commit message 必须简短明确，不要夹杂语义不明或重复性、含糊性的表述。请参考以下链接: <https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages>
 
 当然，在某些项目中 commit message 可能还需要满足某些格式要求，以规范形式，或者使得某种自动化工具可以自动从中提取信息，具体情况应当按照具体项目的要求进行。
 
@@ -323,15 +346,24 @@ Changelog 用来记录代码变更的情况，它的使用 遵循： [Keep A Cha
 ### 常见问题
 
 - 你这也算常见/xxx？我以前在xxx就不是这样的。
+
   是的，你是对的。
-- 为什么GitHub叫Pull Request，GitLab叫Merge Request？
+
+- 为什么 GitHub 叫Pull Request，GitLab叫Merge Request？
+
   GitHub上维护的一般是开源的自由项目，从
+
 - 如何配置一些自动化检查流程？
+
   - [GitHub Action](https://docs.github.com/en/actions)
   - [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
+
 - 我想添加一个空文件到git中，怎么做？
+
   在文件夹下添加一个空的名为 `.gitkeep`的文件：`touch .gitkeep`
+
 - 有没有什么 git 有关的 VSCode 插件推荐？
+
   - [Git Stash](https://marketplace.visualstudio.com/items?itemName=arturock.gitstash)
   - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
   - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
@@ -342,8 +374,13 @@ Changelog 用来记录代码变更的情况，它的使用 遵循： [Keep A Cha
 
 - [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 - 将某个或某些已有的 commit 应用到指定的地方
+
   `git cherry-pick`: <https://git-scm.com/docs/git-cherry-pick>
+
 - 利用git在commit前进行一些自动化检查和修改的工具
+
   pre-commit: <https://pre-commit.com/>
+
 - 将某些文件永久地从git的历史中删除，比如有时曾经误将大型二进制文件提交进git导致仓库体积爆炸
+
   git-filter-repo: <https://github.com/newren/git-filter-repo/?tab=readme-ov-file> . 大体的操作是，先从pip安装这个git插件，然后用`git filter-repo --analyze`分析仓库结构，再用`git filter-repo --invert-paths --path <path>`剔除所有匹配的路径。

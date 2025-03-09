@@ -70,9 +70,9 @@ post:
     unit: " 分钟"
     text: " 阅读"
     # c for char w for word
-    word_char: w
+    word_char: c
     # char or words per minute
-    per_minute: 200
+    per_minute: 380
   pager_buttons:
     older_post: "← 旧帖子"
     newer_post: "新帖子 →"

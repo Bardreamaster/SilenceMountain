@@ -52,7 +52,8 @@ PDF is avalible here: [CV-en.pdf](https://silencemountain-1313535466.cos.ap-guan
 - Dorabot Inc. Robotics Software Engineer. *2022/8-2023/9*
   - Working Language：English.
   - Responsibilities： Depalletizing robot application and unloading algorithm and software development.
-- Department of Mechanical and Energy Engineering(MEE), Southern University of Science and Technology（SUSTech）. Bachelor of Robotics Engineering. *2018/8-2022/7*
+- [Department of Mechanical and Energy Engineering](https://mee.sustech.edu.cn/?lang=en)(MEE), [Southern University of Science and Technology](https://www.sustech.edu.cn/en/)（SUSTech）. Bachelor of Robotics Engineering. *2018/8-2022/7*
+  - [Bionic Design + Learning Lab (BionicDL Lab)](https://bionicdl.ancorasir.com/)
 
 ---
 

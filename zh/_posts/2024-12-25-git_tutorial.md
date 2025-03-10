@@ -349,9 +349,9 @@ Changelog 用来记录代码变更的情况，它的使用 遵循： [Keep A Cha
 
   是的，你是对的。
 
-- 为什么 GitHub 叫Pull Request，GitLab叫Merge Request？
+- 为什么 GitHub 叫 Pull Request，GitLab 叫 Merge Request？
 
-  GitHub上维护的一般是开源的自由项目，从
+  GitHub 上维护的一般是开源的自由项目，从贡献者的角度来看，维护者需要拉取(pull)自己的代码以合并代码，维护者更倾向于向社区请求贡献，有贡献者占主导的意味。而 GitLab 则是从维护者/管理者的角度来看的，多用在企业内部，维护者需要将贡献者的代码合并(merge)到自己的代码中，贡献者更倾向于等待维护者的批准，有维护者占主导的意味。
 
 - 如何配置一些自动化检查流程？
 

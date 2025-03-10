@@ -343,8 +343,6 @@ Changelog is used to record code changes, and its use follows: [Keep A Changelog
 
   Yes, you are right.
 
-- Why is it called Pull Request on GitHub but Merge Request on GitLab? GitHub generally maintains open-source free projects from various contributors. (Note: This appears to be an incomplete answer in the original text)
-
 - How to configure some automated check processes?
 
   - [GitHub Action](https://docs.github.com/en/actions)

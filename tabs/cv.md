@@ -35,12 +35,12 @@ lng_pair: cv
 # to disable this page, simply set published: false or delete this file
 #published: false
 ---
-PDF is avalible here: [CV-en.pdf](https://silencemountain-1313535466.cos.ap-guangzhou.myqcloud.com/cv-en.pdf).
+PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijinqi-cv.pdf).
 
 ## Contact
 
 - Mail： <changshanshi@outlook.com>
-- Home Page： <https://shichangshan.xyz>
+- Home Page： <https://weijinqi.com>
 - GitHub： <https://github.com/Bardreamaster>
 
 ---

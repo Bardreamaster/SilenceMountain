@@ -36,12 +36,12 @@ lng_pair: cv
 #published: false
 ---
 
-PDF 请在此处下载： [简历](https://silencemountain-1313535466.cos.ap-guangzhou.myqcloud.com/cv.pdf)。
+PDF 请在此处下载： [简历](https://weijinqi.com/assets/files/魏锦启-简历.pdf)。
 
 ## 联系方式
 
 - 邮箱： <changshanshi@outlook.com>
-- 个人主页： <https://shichangshan.xyz>
+- 个人主页： <https://weijinqi.com/zh/>
 - GitHub： <https://github.com/Bardreamaster>
 
 ---

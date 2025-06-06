@@ -49,7 +49,7 @@ PDF 请在此处下载： [简历](https://weijinqi.com/assets/files/魏锦启-�
 ## 教育及工作经历
 
 - 帕西尼感知科技（深圳）有限公司， 机器人软件工程师 *2023/10-现在*
-  - 开发方向：遥操作算法，人形机器人上肢控制算法，模仿学习等应用算法调优。
+  - 开发方向：遥操作算法，人形机器人上肢控制算法，模仿学习等机器人学习算法。
 - 蓝胖子机器智能有限公司，机器人软件工程师 *2022/8-2023/9*
   - 工作语言：英语。
   - 开发方向： 拆码垛机器人算法及应用。
@@ -72,11 +72,16 @@ PDF 请在此处下载： [简历](https://weijinqi.com/assets/files/魏锦启-�
 
 - 人形机器人遥操作
   - 为内部自研人形机器人设计代码框架，独立实现轮式人形机器人遥操作软件开发。编写运动学控制代码，使用外部传感器控制机器人的底盘、腰部、上肢和头部。
-  - 搭建完整的需求-验证-开发-测试-CI/CD流程。
+  - 使用多种机器人和外置传感器开发遥操作，例如：UR机械臂，Meta Quest 3， Apple VisionPro。
   - Keywords: ROS2, kinematics, Python, System Management.
-- 多模态数据采集与处理
+- 多模态模型开发
   - 设计使用人体数据采集装置，采集人类行为和操作中的视觉、深度和位姿信息，对数据后处理用于模仿学习。
-  - Keywords: Computer Vision(CV), Point Cloud Processing, Imitation Learning.
+  - 训练、微调 VLM，比如 $\pi_0$
+  - Keywords: Computer Vision(CV), Point Cloud Processing, Imitation Learning, VLM.
+- 软件开发流程建设
+  - 设计软件开发指南并提供配套工具，包括代码指南、提交指南、工具指南，预构建的开发操作系统、预构建的容器镜像、预配置的CI流程。
+  - 搭建完整的需求-验证-开发-测试-CI/CD流程。
+  - Keywords: Linux, Docker, Git, CI/CD, Software Development
 
 ### 蓝胖子机器智能
 

@@ -48,7 +48,7 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 ## Education and Work Experience
 
 - PaXini Technology (Shenzhen) Co., Ltd. Robotics Software Engineer. *2023/10-Now*
-  - Responsibilities：Humanoid & Teleoperation algorithm, imitation learning data collection.
+  - Responsibilities：Humanoid & Teleoperation algorithm, imitation learning, robot learning.
 - Dorabot Inc. Robotics Software Engineer. *2022/8-2023/9*
   - Working Language：English.
   - Responsibilities： Depalletizing robot application and unloading algorithm and software development.
@@ -69,12 +69,17 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 ### PaXini Technology (Shenzhen) Co., Ltd.
 
 - Teleoperation of Humanoid Robots
-  - Designed software framework independently for teleoperation of wheeled humanoid robots. Using external sensors' data to control the robot's chassis, waist, arms, and head .
-  - Build a complete Requirements-Verification-Development-Test-CI/CD process.
+  - Designed code framework for internally developed humanoid robots and independently implemented teleoperation software for wheeled humanoid robots. Wrote kinematic control code to control the robot's chassis, waist, upper limbs, and head using external sensors.
+  - Developed teleoperation using various robots and external sensors, such as: UR robotic arms, Meta Quest 3, Apple Vision Pro.
   - Keywords: ROS2, kinematics, Python, System Management.
-- Multimodal Data Acquisition and Processing
-  - Design and use a human data acquisition device to capture visual, depth, and pose information from human behavior and manipulation, and post-processes the data for robot imitation learning.
-  - Keywords: Computer Vision(CV), Point Cloud Processing, Imitation Learning.
+- Multimodal Model Development
+  - Designed and used human data collection equipment to capture visual, depth, and pose information during human behaviors and operations, with post-processing for imitation learning.
+  - Trained and fine-tuned VLMs, such as $\pi_0$
+  - Keywords: Computer Vision (CV), Point Cloud Processing, Imitation Learning, VLM.
+- Software Development Process Improvement
+  - Designed software development guidelines and provided supporting tools, including code guidelines, submission guidelines, tool guidelines, pre-built development operating systems, pre-built container images, and pre-configured CI workflows.
+  - Established a complete requirement-validation-development-testing-CI/CD process.
+  - Keywords: Linux, Docker, Git, CI/CD, Software Development.
 
 ### Dorabot
 

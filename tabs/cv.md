@@ -47,9 +47,9 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 
 ## Education and Work Experience
 
-- PaXini Technology (Shenzhen) Co., Ltd. Robotics Software Engineer. *2023/10-Now*
+- [PaXini Technology (Shenzhen) Co., Ltd](https://www.paxini.com/). Robot Learning Department，Robotics Software Engineer. *2023/10-2025/7*
   - Responsibilities：Humanoid & Teleoperation algorithm, imitation learning, robot learning.
-- Dorabot Inc. Robotics Software Engineer. *2022/8-2023/9*
+- Dorabot Inc. R&D，Robotics Software Engineer. *2022/8-2023/9*
   - Working Language：English.
   - Responsibilities： Depalletizing robot application and unloading algorithm and software development.
 - [Department of Mechanical and Energy Engineering](https://mee.sustech.edu.cn/?lang=en)(MEE), [Southern University of Science and Technology](https://www.sustech.edu.cn/en/)（SUSTech）. Bachelor of Robotics Engineering. *2018/8-2022/7*
@@ -122,6 +122,9 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 
 ## Awards
 
+- PaXini 2024 Starlight Award,1st.(recognizing outstanding employees whose perform far beyond their job level)
+- PaXini 2024 Performance Award, 2nd.
+- PaXini 2024 Outstanding Employee
 - SUSTech First Prize in Comprehensive Design for the 2021-2022 Academic Year (1/33)
 - Outstanding Undergraduate Graduation Design (Thesis) of the Southern University of Science and Technology in 2022：“Design Science for Reproducible and Shareable Robot Learning——Remote Control and Teaching Design”
 - The 19th National University Robotics Competition, RoboMaster2020  University Championship National Third Prize

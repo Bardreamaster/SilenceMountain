@@ -37,94 +37,129 @@ lng_pair: cv
 ---
 PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijinqi-cv.pdf).
 
-## Contact
 
-- Mail： <changshanshi@outlook.com>
-- Home Page： <https://weijinqi.com>
-- GitHub： <https://github.com/Bardreamaster>
+# **Jinqi Wei**
 
----
+- Robotics Researcher
+- [changshanshi@outlook.com](mailto:changshanshi@outlook.com)
+- [weijinqi.com](https://weijinqi.com/)
+- [GitHub](https://github.com/Bardreamaster)
 
-## Education and Work Experience
+## EDUCATION
 
-- [PaXini Technology (Shenzhen) Co., Ltd](https://www.paxini.com/). Robot Learning Department，Robotics Software Engineer. *2023/10-2025/7*
-  - Responsibilities：Humanoid & Teleoperation algorithm, imitation learning, robot learning.
-- Dorabot Inc. R&D，Robotics Software Engineer. *2022/8-2023/9*
-  - Working Language：English.
-  - Responsibilities： Depalletizing robot application and unloading algorithm and software development.
-- [Department of Mechanical and Energy Engineering](https://mee.sustech.edu.cn/?lang=en)(MEE), [Southern University of Science and Technology](https://www.sustech.edu.cn/en/)（SUSTech）. Bachelor of Robotics Engineering. *2018/8-2022/7*
-  - [Bionic Design + Learning Lab (BionicDL Lab)](https://bionicdl.ancorasir.com/)
+**Southern University of Science and Technology (SUSTech)**                                                Shenzhen, China
 
----
+Bachelor of Engineering in Robotics Engineering                                                                     2018/8 – 2022/7
 
-## Publication
+* Advised by Prof. Chaoyang, Song and Study in [Bionic Design \+ Learning Lab](https://bionicdl.ancorasir.com/).
+* SUSTech **First Prize** in Comprehensive Design for the 2021-2022 Academic Year (1/33).
+* **Outstanding Undergraduate Graduation Design** of the SUSTech in 2022\.
 
-- Tianyu Wu, Yujian Dong, Xiaobo Liu, Xudong Han, Yang Xiao, **Jinqi Wei**, Fang Wan, Chaoyang Song. Vision-based tactile intelligence with soft robotic metamaterial, Materials & Design,Volume 238,2024,112629,ISSN 0264-1275, doi: 10.1016/j.matdes.2024.112629 . [[paper]](https://www.sciencedirect.com/science/article/pii/S0264127524000017)
-- T. Wu, Y. Dong, Y. Xiao, **J. Wei**, F. Wan and C. Song, "Vision-based, Low-cost, Soft Robotic Tongs for Shareable and Reproducible Tactile Learning," 2024 International Conference on Advanced Robotics and Mechatronics (ICARM), Tokyo, Japan, 2024, pp. 388-393, doi: 10.1109/ICARM62033.2024.10715842. [[paper]](https://ieeexplore.ieee.org/document/10715842)
+## WORK EXPERIENCE
 
----
+**PaXini Technology (Shenzhen) Co., Ltd.**                                                                               Shenzhen, China
 
-## Projects
+Robotics Software Engineer                                                                                                     2023/10 – 2025/7
 
-### PaXini Technology (Shenzhen) Co., Ltd.
+* Developed humanoid & Teleoperation algorithm, data collection and  imitation learning.
+* Mentored junior engineers and contributed to the team's growth through technical interviews.
+* PaXini 2024 **Starlight Award, 1st**. (Recognizing outstanding employees whose perform far beyond their job level)
+* PaXini 2024 Performance Award, 2nd.
+* PaXini 2024 **Outstanding Employee**.
 
-- Teleoperation of Humanoid Robots
-  - Designed code framework for internally developed humanoid robots and independently implemented teleoperation software for wheeled humanoid robots. Wrote kinematic control code to control the robot's chassis, waist, upper limbs, and head using external sensors.
-  - Developed teleoperation using various robots and external sensors, such as: UR robotic arms, Meta Quest 3, Apple Vision Pro.
-  - Keywords: ROS2, kinematics, Python, System Management.
-- Multimodal Model Development
-  - Designed and used human data collection equipment to capture visual, depth, and pose information during human behaviors and operations, with post-processing for imitation learning.
-  - Trained and fine-tuned VLMs, such as $\pi_0$
-  - Keywords: Computer Vision (CV), Point Cloud Processing, Imitation Learning, VLM.
-- Software Development Process Improvement
-  - Designed software development guidelines and provided supporting tools, including code guidelines, submission guidelines, tool guidelines, pre-built development operating systems, pre-built container images, and pre-configured CI workflows.
-  - Established a complete requirement-validation-development-testing-CI/CD process.
-  - Keywords: Linux, Docker, Git, CI/CD, Software Development.
+**Dorabot Inc.**                                                                                                                              Shenzhen, China
 
-### Dorabot
+Robotics Software Engineer                                                                                                       2022/8 – 2023/9
 
-- Large-scale automated production line of a state-owned enterprise in the liquor industry
-  - KUKA high load robot arm is used to visually segment, identify and locate the target object, and then differentiate the incoming pallet type through linear planning, and automatically perform the depalletizing tasks required by the order from the conveyor line in whole layers, rows or pieces.
-  - Using Yaskawa's low and medium load robot arms, we can depalletize a full layer of fully palletized containers, release the materials to a designated area, and repalletize the empty containers in an orderly manner.
-  - Keywords: C/C++, Python, ROS2, Linux, Linear programming, KUKA KRL, CV.
-- Comprehensive platform for experimentation, verification, and demonstration of depalletizing solutions
-  - Yaskawa's low and medium load robot arms are used to develop and maintain application solutions for generalized depalletizing scenarios, and to serve as a dedicated technology testing platform and a platform for demonstrating stable results.
-  - Keywords: C/C++, Python, ROS2, Path Planning, Trajectory Plan, CV, Linux, Socket.
+* Developed industry warehouse (de)palletizing application.
 
-### Ningquan Science and Technology Inc. & College of Engineering, SUSTech. Comprehensive Design
+## RESEARCH & PROJECT EXPERIENCE
 
-- Design Science for Reproducible and Shareable Robot Learning —— Remote Control and Teaching.
-  - We proposed a novel method by focusing on rich and intuitive representation, visualization,tracking,processing,and storage of manipulation data from the manual operation of open-sourced tools with soft tips and AR markers to provide force-sensitive information with low-cost hardware in a web-based interface, namely the DeepClaw ASYST tool kit.The development of the DeepClaw ASYST aims at a hacker-level kit to be released through crowdfunding for mass adoption as an intuitive human-machine interface for interactive data collection
-  - Keywords: Python, CV ArucoCode PoseDetection, Learning by Demonstration, Imitation Learning, Human–Machine Interaction, UR.
+**PaXini Technology (Shenzhen) Co., Ltd.**						    Shenzhen, China
 
-### BionicDL Lab Robot Arm Project
+Robotics Software Engineer
+**Humanoid Teleoperation**                                                                                                   2023.12 – 2025.7
 
-- Interactive and user-friendly operation of robotic arms and other devices with visual recognition *2021.7-2021.9*
-  - Using the UR robotic arm as an example, we have developed  a way to remotely and non-contactly control the robotic arm (or other mechanical devices) via an external camera and a mobile QR code, and based on this, we have simplified the cost of using and operating the robotic arm for people with no knowledge of it, and we have also compared it to the original way of operating the robotic arm by Franka and Aubo. The code is posted on GitHub due to permission limitations, and the display is posted as a video on Bilibili：[小学生也可以自由地和机械臂玩耍](https://www.bilibili.com/video/BV1yM4y1V73B/)。
-  - Keywords: C++, Python, Franka, Pose Detection, Human–Machine Interaction, Teaching Application, Remote Control.
-- Robotic Waste Sorting Line with Visual Recognition *2021.1-2021.6*
-  - Recognized and sorted hard objects on a moving conveyor using a Franka robot arm and quantified the advantages of the throwing method over the moving method. Responsible for visual recognition, robot arm control logic, teamwork on code environment, and technical documentation on the project. Code, documentation and demos are posted on github. [GitHub](https://github.com/Bardreamaster/ME336-Yellow-Team-Project) 。
-  - Keywords: C++, Python, Franka, Yolo, Machine Learning, Data Collection&Preparation&Training.
+* Designed and implemented full-stack teleoperation software framework for whole-body teleoperation. Demonstrated at World Robot Conference 2024\.
+* Built a complete Requirements-Verification-Development-Test-CI/CD process and deployed to a 70-person development team.
 
-### DJI RoboMaster University Championship
+**Multimodal Data Collection for Imitation Learning**				     2025.2 – 2025.7
 
-- Member of the electrical control team & Head of the electronic hardware team of the ARTINX team. *2019.6-2020.10*
-  - Responsible for the development and manufacturing of robot [main control boards](https://github.com/Bardreamaster/Chasis), [supercapacitors, and power control modules](https://github.com/Bardreamaster/SuperCapacitor/tree/main). Responsible for writing and debugging power control code using Keil, familiar with vscode writing and Keil debugging tool chain.
-  - Utilized Altium Designer, KiCad, and LCEDA(EasyEDA) for circuit design and product testing.
-  - Skilled in manual PCB soldering, testing techniques, and circuit debugging using digital power supplies, signal generators, and oscilloscopes.
-  - Keywords: Embedded System, PCB Design.
-- Member of the Mechanical Team of the ARTINX team & Financial Management *2018.10-2019.5*
-  - Mechanical design using Solidworks, AutoCAD, optimizing PrusaSlicer, ideaMaker print parameters.
-  - Managed annual seasonal cash flow (over ￥200,000), prepared financial statements, and traveled through purchasing, quoting, and reimbursement processes.
-  - Keywords: Mechanical Design, Cost Control, Project Management.
+* Used multi-model data collection devices and designed a data process pipeline to collect manipulation information for robot imitation learning. Deployed in PaXini Super EID Factory.
+* Fine-tune(full) openpi models on cloud server and inference locally to control different robots. Applied to the Procter & Gamble (P\&G) production process.
 
----
+**Dorabot Inc.**										    Shenzhen, China
 
-## Awards
+Robotics Software Engineer                                                                                                        2022.7 – 2023.9
 
-- PaXini 2024 Starlight Award,1st.(recognizing outstanding employees whose perform far beyond their job level)
-- PaXini 2024 Performance Award, 2nd.
-- PaXini 2024 Outstanding Employee
-- SUSTech First Prize in Comprehensive Design for the 2021-2022 Academic Year (1/33)
-- Outstanding Undergraduate Graduation Design (Thesis) of the Southern University of Science and Technology in 2022：“Design Science for Reproducible and Shareable Robot Learning——Remote Control and Teaching Design”
-- The 19th National University Robotics Competition, RoboMaster2020  University Championship National Third Prize
+* Developed large-scale (de)palletizing application using heavy-duty KUKA robots and Mixed Integer Programs (MIPs) for industry automated warehouses, achieving a processing speed of up to 1200 boxes per hour per single robot.
+* Maintained a (de)palletizing showcase and algorithm verification platform using Yaskawa robots with containerized CI/CD, enabling 24/7 continuous operation.
+
+**Ningquan Science and Technology Inc. & SUSTech. Comprehensive Design**		    Shenzhen, China
+
+Algorithm Engineer
+**Design Science for Reproducible and Shareable Robot Learning**                                   2021.9 – 2022.6
+
+* Proposed a novel method for reproducible and shareable robot learning by focusing on rich and intuitive representation, processing, and storage of manipulation data. This was achieved through the [DeepClaw](https://me336.ancorasir.com/?page_id=312) system that features a unified data storage format, easily accessible web-based software, and open-source, low-cost hardware for teleoperation and data collection.
+* Published papers on method and tools from this project in ICARM 2024 and Materials & Design. And used in ME336 Collaborative Robot Learning from 2022 to 2024\.
+
+**BionicDL Lab, SUSTech**								    Shenzhen, China
+
+Algorithm Engineer									     2021.1 – 2021.6
+
+* Course Project (ME336 Collaborative Robot Learning). \[[GitHub Repo](https://github.com/Bardreamaster/ME336-Yellow-Team-Project)\]
+* Designed and implemented an automated robotic waste sorting line with visual recognition. Improved sorting efficiency with a throw method rather than a traditional pick-and-place approach.
+
+**DJI RoboMaster University Championship**						    Shenzhen, China
+
+Electronics Hardware Team Lead                                                                                             2019.6 – 2020.10
+
+* Developed robot [main control board](https://github.com/Bardreamaster/Chasis), [supercapacitors and power control modules](https://github.com/Bardreamaster/SuperCapacitor/tree/main) for the whole robot control and communication.
+* RoboMaster2020 University Championship **National Third Prize**
+
+Mechanical Team Member & Financial Manager                                                                     2018.10 – 2019.5
+
+* Contributed to the structural design of the infantry robot (wheeled robot that fires high-speed spherical projectiles).
+* Responsible for full-season budget (Over 200,000 CNY / 30,000 USD) planning and management.
+* RoboMaster2019 South China Regional Competition, **Third Prize**
+
+## OPEN SOURCE CONTRIBUTIONS
+
+[**Robook**](https://www.robook.org/) **(Robotics Handbook)**
+
+Founder, Maintainer								                 2023.4 – present
+
+* A robotics handbook for beginners. Contents include introductions to robotics, robotics competitions, and undergraduate research opportunities. Achieved 40000+ views and comments.
+
+[**ROS2 Chinese Documentation**](https://ros2docs.robook.org/humble/index.html)
+
+Maintainer                  									    2024.3 – present
+
+* High-quality, manually proofread ROS2 Chinese documents with annotations.
+
+**Others**
+
+* Developed Python libraries used in robotics software development released on [GitHub](https://github.com/Bardreamaster)
+* Contributed to robotics communities such as ROS2, IsaacLab.
+
+## PUBLICATION
+
+* T. Wu, Y. Dong, Y. Xiao, **J. Wei**, F. Wan and C. Song, "[Vision-based, Low-cost, Soft Robotic Tongs for Shareable and Reproducible Tactile Learning](https://ieeexplore.ieee.org/document/10715842)", 2024 International Conference on Advanced Robotics and Mechatronics (ICARM 2024).
+* T. Wu, Y. Dong, X. Liu, X. Han, Y. Xiao, **J. Wei**, F. Wan, C. Song, " [Vision-based tactile intelligence with soft robotic metamaterial](https://www.sciencedirect.com/science/article/pii/S0264127524000017)", Materials & Design.
+
+## SKILLSET
+
+**Robotics & Systems**
+
+* Robotics platforms: Franka, UR, KUKA etc.
+* Operating systems: Linux, Mac, Windows.
+* Systems & tools: ROS2. Server, Website and Web service maintenance.
+
+**Software & Programming**
+
+* Languages: Python, C/C++, JS, Matlab.
+* Tools: Docker, Git-based project management.
+
+**Mechanical & Electrical Design**
+
+* SolidWorks, AutoCAD. 3D Printing. Altium Designer, EasyEDA.

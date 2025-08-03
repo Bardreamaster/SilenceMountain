@@ -38,97 +38,128 @@ lng_pair: cv
 
 PDF 请在此处下载： [简历](https://weijinqi.com/assets/files/魏锦启-简历.pdf)。
 
-## 联系方式
+# **魏锦启**
 
-- 邮箱： <changshanshi@outlook.com>
-- 个人主页： <https://weijinqi.com/zh/>
-- GitHub： <https://github.com/Bardreamaster>
+- Robotics Researcher
+- [changshanshi@outlook.com](mailto:changshanshi@outlook.com)
+- [weijinqi.com](https://weijinqi.com/)
+- [GitHub](https://github.com/Bardreamaster)
 
----
+## 教育经历
 
-## 教育及工作经历
+**南方科技大学 (SUSTech)**                                                                                                                中国，深圳
 
-- [帕西尼感知科技（深圳）有限公司](https://www.paxini.com/)，机器人深度学习部，机器人软件工程师 *2023/10-2025/7*
-  - 开发方向：遥操作算法，人形机器人上肢控制算法，模仿学习等机器人学习算法。
-- 蓝胖子机器智能有限公司，R&D，机器人软件工程师 *2022/8-2023/9*
-  - 工作语言：英语。
-  - 开发方向： 拆码垛机器人算法及应用。
-- [南方科技大学](https://www.sustech.edu.cn/)，[机械与能源工程系](https://mee.sustech.edu.cn/)，机器人工程本科 *2018/8-2022/7*
-  - [Bionic Design + Learning Lab (BionicDL Lab)](https://bionicdl.ancorasir.com/)
-  - 修读课程： 现代控制与最优估计、控制工程基础、机器人建模与控制、工程机器学习、工程优化；信号与系统、模拟/数字电路、数据结构与算法分析；机械设计、材料力学.
+机器人工程                                                                                                                                 2018/8 – 2022/7
 
----
+* Advised by Prof. Chaoyang, Song and Study in [Bionic Design \+ Learning Lab](https://bionicdl.ancorasir.com/).
+* 南方科技大学 2021-2022 年度综合设计**一等奖**(1/33).
+* 南方科技大学 2022 年**优秀毕业设计（论文）**
+
+## 工作经历
+
+**帕西尼感知科技**                                                                                                                               中国，深圳
+
+Robotics Software Engineer                                                                                                     2023/10 – 2025/7
+
+* 人形机器人、遥操作、数据采集、模仿学习算法开发。
+* Mentored junior engineers and contributed to the team's growth through technical interviews.
+* PaXini 2024 **星光奖, 第一名**。（表彰表现远超岗位职级的优秀员工）
+* PaXini 2024 绩效奖, 第二名。
+* PaXini 2024 **优秀员工。**
+
+**蓝胖子机器人**                                                                                                                                   中国，深圳
+
+Robotics Software Engineer                                                                                                       2022/8 – 2023/9
+
+* 工业物流、仓储拆码垛（(de)palletizing）应用开发。
+
+## 科研与项目经历
+
+**帕西尼感知科技**						                                                  中国，深圳
+
+Robotics Software Engineer
+**人形机器人遥操作**                                                                                                              2023.12 – 2025.7
+
+* 设计并实现了完整的机器人遥操作框架，用于机器人全身控制。展示在 2024 世界机器人大会（WRC 2024）上。
+* 搭建了完整的软件开发流程（包括需求、验证、部署、测试及持续集成/持续部署），并应用于超过70人的开发团队中。
+
+**多模态数据采集与模仿学习**            				                                            2025.2 – 2025.7
+
+* 使用多模态数据采集设备，设计数据采集与处理流程，采集操作中的多模态数据用于模仿学习算法。部分设备、算法与流程部署在帕西尼超级具身智能数据工厂。
+* 在云服务器上 Fine-tune(full) openpi models 并在本地推理用于控制多种机器人。应用在某全球知名日用品公司生产线中。
+
+**蓝胖子机器人** 										           中国，深圳
+
+Robotics Software Engineer                                                                                                        2022.7 – 2023.9
+
+* 使用 KUKA 重载型机械臂和混合整数规划（MIPs）等算法开发大型拆码垛应用，每台机器人处理效率高达1200箱每小时。部署在某国内知名白酒企业立体仓库中。
+* 开发维护了使用 Yaskawa 机械臂的拆码垛展示平台和算法验证平台。使用 containerized CI/CD 技术可以 24/7 不停机运行。
+
+**宁泉科技 & 南方科技大学综合设计**		                                                                            中国，深圳
+
+Algorithm Engineer
+**Design Science for Reproducible and Shareable Robot Learning**                                   2021.9 – 2022.6
+
+* Proposed a novel method for reproducible and shareable robot learning by focusing on rich and intuitive representation, processing, and storage of manipulation data. This was achieved through the [DeepClaw](https://me336.ancorasir.com/?page_id=312) system that features a unified data storage format, easily accessible web-based software, and open-source, low-cost hardware for teleoperation and data collection.
+* Published papers on method and tools from this project in ICARM 2024 and Materials & Design. And used in ME336 Collaborative Robot Learning from 2022 to 2024\.
+
+**南方科技大学	BionicDL Lab**							                        中国，深圳
+
+Algorithm Engineer									     2021.1 – 2021.6
+
+* 课程Project (ME336 协作机器人学习). [[GitHub Repo](https://github.com/Bardreamaster/ME336-Yellow-Team-Project)]
+* 设计并实现了有视觉识别的自动机械臂垃圾分拣线。使用“抛掷”而并非传统的“ pick-and-place”的方式，有效提高了效率。
+
+**DJI RoboMaster 全国大学生机器人大赛**						           中国，深圳
+
+Electronics Hardware Team Lead                                                                                             2019.6 – 2020.10
+
+* 开发了机器人[主控板](https://github.com/Bardreamaster/Chasis)、[超级电容及功率控制板](https://github.com/Bardreamaster/SuperCapacitor/tree/main)，用于整机控制和通信。
+* RoboMaster2020 全国大学生机器人大赛**全国三等奖。**
+
+Mechanical Team Member & Financial Manager                                                                     2018.10 – 2019.5
+
+* 参与步兵机器人（一种发射高速弹丸的轮式机器人）的结构设计。
+* 负责全赛季资金规划（超过二十万人民币）与管理。
+* RoboMaster2019 南部分区赛**三等奖。**
+
+## 开源贡献
+
+[**Robook**](https://www.robook.org/) **(机器人学手册)**
+
+Founder, Maintainer								                     2023.4 – 现在
+
+* 一个为初学者准备的机器人学手册。内容包含对机器人学的介绍、机器人有关竞赛、本科生科研机会等内容。截止到2025年7月已获超40000访问。
+
+[**ROS2**](https://ros2docs.robook.org/humble/index.html) **中文文档**
+
+Maintainer                  									        2024.3 – 现在
+
+* 高质量、人工校对并带有人工注释的ROS2中文文档。
+
+**Others**
+
+* 开发了一些 robotics 可用的软件，发布在 [GitHub](https://github.com/Bardreamaster)
+* Contributed to robotics communities such as ROS2, IsaacLab.
 
 ## 论文
 
-- Tianyu Wu, Yujian Dong, Xiaobo Liu, Xudong Han, Yang Xiao, **Jinqi Wei**, Fang Wan, Chaoyang Song. Vision-based tactile intelligence with soft robotic metamaterial, Materials & Design,Volume 238,2024,112629,ISSN 0264-1275, doi: 10.1016/j.matdes.2024.112629 . [[paper]](https://www.sciencedirect.com/science/article/pii/S0264127524000017)
-- T. Wu, Y. Dong, Y. Xiao, **J. Wei**, F. Wan and C. Song, "Vision-based, Low-cost, Soft Robotic Tongs for Shareable and Reproducible Tactile Learning," 2024 International Conference on Advanced Robotics and Mechatronics (ICARM), Tokyo, Japan, 2024, pp. 388-393, doi: 10.1109/ICARM62033.2024.10715842. [[paper]](https://ieeexplore.ieee.org/document/10715842)
+* T. Wu, Y. Dong, Y. Xiao, **J. Wei**, F. Wan and C. Song, "[Vision-based, Low-cost, Soft Robotic Tongs for Shareable and Reproducible Tactile Learning](https://ieeexplore.ieee.org/document/10715842)," 2024 International Conference on Advanced Robotics and Mechatronics (ICARM 2024).
+* T. Wu, Y. Dong, X. Liu, X. Han, Y. Xiao, **J. Wei**, F. Wan, C. Song, “ [Vision-based tactile intelligence with soft robotic metamaterial](https://www.sciencedirect.com/science/article/pii/S0264127524000017)”, Materials & Design.
 
----
+## 技术栈
 
-## 项目经历
+**Robotics & Systems**
 
-### 帕西尼感知科技
+* Robotics platforms: Franka, UR, KUKA etc.
+* Operating systems: Linux, Mac, Windows.
+* Systems & tools: ROS2. Server, Website and Web service maintenance.
 
-- 人形机器人遥操作
-  - 为内部自研人形机器人设计代码框架，独立实现轮式人形机器人遥操作软件开发。编写运动学控制代码，使用外部传感器控制机器人的底盘、腰部、上肢和头部。
-  - 使用多种机器人和外置传感器开发遥操作，例如：UR机械臂，Meta Quest 3， Apple VisionPro。
-  - Keywords: ROS2, kinematics, Python, System Management.
-- 多模态模型开发
-  - 设计使用人体数据采集装置，采集人类行为和操作中的视觉、深度和位姿信息，对数据后处理用于模仿学习。
-  - 训练、微调 VLM，比如 $\pi_0$
-  - Keywords: Computer Vision(CV), Point Cloud Processing, Imitation Learning, VLM.
-- 软件开发流程建设
-  - 设计软件开发指南并提供配套工具，包括代码指南、提交指南、工具指南，预构建的开发操作系统、预构建的容器镜像、预配置的CI流程。
-  - 搭建完整的需求-验证-开发-测试-CI/CD流程。
-  - Keywords: Linux, Docker, Git, CI/CD, Software Development
+**Software & Programming**
 
-### 蓝胖子机器智能
+* Languages: Python, C/C++, JS, Matlab.
+* Tools: Docker, Git-based project management.
 
-- 某白酒业国企大型自动化生产线
-  - 使用KUKA高负载机械臂，在视觉分割、识别、定位目标物体后，再经过线性规划区分来料垛型，从输送线上自动整层或整排或零散地执行订单所需的拆垛任务。
-  - 使用Yaskawa中低负载机械臂，有序整层拆取码放完好的装有物料的箱体整垛，有序释放物料至指定区域，并重新码垛空余箱体。
-  - Keywords: C/C++, Python, ROS2, Linux, Linear programming, KUKA KRL, CV.
-- 拆码垛方案实验、验证、演示综合平台
-  - 使用Yaskawa中低负载机械臂，开发和维护用于通用拆码垛场景的应用方案，并作为专用技术测试平台和稳定效果演示平台。
-  - Keywords: C/C++, Python, ROS2, Path Planning, Trajectory Plan, CV, Linux, Socket.
+**Mechanical & Electrical Design**
 
-### 宁泉科技-南方科技大学工学院 综合设计
-
-- 结构化通用表征结构环境人机交互系统——远程控制与综合教学设计
-  - 项⽬开发了⼀套包括硬件、软件、使用方案的完整系统，使用3D打印对硬件进⾏设计与加⼯，基于网页开发了⼀套交互式数据采集软件，并提供了详细的使⽤教程与应⽤样例，⼤幅降低了使⽤与学习成本，提⾼了机器⼈操作数据采集与相关知识学习的效率。项⽬系统在协作机器⼈课程中进⾏了为期2周的实验课程的教学，获得了丰富的反馈意⻅。部分效果与源码开放在GitHub。
-  - Keywords: Python, CV ArucoCode PoseDetection, Learning by Demonstration, Imitation Learning, Human–Machine Interaction, UR.
-
-### BionicDL Lab 机械臂项目实践
-
-- 视觉识别的机械臂等设备的交互友好式操作 *2021.7-2021.9*
-  - 以 UR 机械臂为样例开发调试了通过外置摄像头和移动二维码来远程非接触控制机械臂（或其它机械设备）的控制方式，并基于此简化对无知识背景的人的使用和操作成本，同时与 Franka、Aubo 的原始操作方式进行了对比.受权限限制，相关代码部分发布在 GitHub 上，显示效果部分以视频形式发布在 Bilibili 上：[小学生也可以自由地和机械臂玩耍](https://www.bilibili.com/video/BV1yM4y1V73B/)。
-  - Keywords: C++, Python, Franka, Pose Detection, Human–Machine Interaction, Teaching Application, Remote Control.
-- 视觉识别的机械臂垃圾分拣流水线 *2021.1-2021.6*
-  - 使用 Franka 机械臂对移动传送带上的硬质物体进行识别分拣，并量化考量抛掷方式比移动方式的优势。在项目中负责视觉识别，机械臂控制逻辑，团队协作代码环境，技术文档编写。相关代码、文档及效果演示均发布在 [GitHub](https://github.com/Bardreamaster/ME336-Yellow-Team-Project) 上。
-  - Keywords: C++, Python, Franka, Yolo, Machine Learning, Data Collection&Preparation&Training.
-
-### 大疆 RoboMaster 机甲大师赛
-
-- ARTINX 战队电控组成员、电子硬件组负责人 *2019.6-2020.10*
-  - 负责机器人[主控板](https://github.com/Bardreamaster/Chasis)、[超级电容及功率控制模块](https://github.com/Bardreamaster/SuperCapacitor/tree/main)的开发制造，并负责使用 Keil 编写调试功率控制代码, 熟悉 vscode 编写、Keil 调试的工具链。
-  - 使用 AltiumDesigner、KiCad、立创 EDA 进行电路设计、产品测试。
-  - 熟练掌握手工 PCB 焊接、测试技术，熟练使用数字电源、信号发生器、示波器进行电路调试.
-  - Keywords: Embedded System, PCB Design.
-- ARTINX 战队机械组成员、财务管理 *2018.10-2019.5*
-  - 使用 Solidworks设计步兵机器人.
-  - 管理年度赛季资金流动(流水二十余万元)，撰写财务报表，寻找合适供应商，奔走采购、报价、报销流程.
-  - Keywords: Mechanical Design, Cost Control, Project Management.
-
----
-
-## 获奖经历
-
-- 帕西尼2024星光奖第一名（表彰表现远超岗位职级的优秀员工）
-- 帕西尼2024绩效奖第二名
-- 帕西尼2024优秀员工
-- 南方科技大学2021-2022学年综合设计一等奖(1/33)
-- 南方科技大学2022届本科生优秀毕业设计（论文）：“结构化通用表征结构环境人机交互系统——远程控制与综合教学设计”
-- 第十九届全国大学生机器人大赛 ROBOMASTER2020 机甲大师对抗赛全国三等奖
-- 第十八届全国大学生机器人大赛 ROBOMASTER2019 南部分区赛三等奖
-- 南方科技大学2018级入学奖学金
+* SolidWorks, AutoCAD. 3D Printing. Altium Designer, EasyEDA.

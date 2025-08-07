@@ -31,5 +31,77 @@ image_lazy_loader_on: true
 # exclude from search engines
 #search_engine_exclude: true
 # to disable this page, simply set published: false or delete this file
-published: false
+# published: false
+
+# you can move this content to front matter of [language]/tabs/projects.md
+###########################################################
+#                Projects Page Data
+###########################################################
+page_data:
+  main:
+    header: "Projects"
+    info: "Selected projects."
+    text_color: "oklch(0.5691 0.1998 297.01)"
+    # if you don't want to use background image, comment it. back_color will be activated.
+    # img: ":projects-heading.jpg"
+    # back_color: "lightblue"
+
+  category:
+    - title: "Research & Academic"
+      type: research
+      color: "oklch(0.5544 0.1727 4.76)"
+    - title: "Work"
+      type: work
+      color: "oklch(0.5544 0.1061 243)"
+    - title: "Personal & Open-source"
+      type: personal
+      color: "oklch(0.6426 0.1751 148.76)"
+
+  list:
+    - project_name: "Dora Depalletizer"
+      type: work
+      img: ":layer_depalletizing.jpg"
+      img_title: "Dora Depalletizer"
+      date: "2023-09-01"
+      post: |
+
+        Developed large-scale (de)palletizing application using heavy-duty KUKA robots and Mixed Integer Programs (MIPs) for industry automated warehouses, achieving a processing speed of up to 1200 boxes per hour per single robot.
+
+        ## Demo Video
+
+        ### Depalletizing by layer
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=214440726&bvid=BV1Ga411j7Ck&cid=730826047&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+        ### Depalletizing by row
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=683577867&bvid=BV13S4y1w7Lm&cid=713979829&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+    - type: research
+      project_name: "Design Science for Reproducible and Shareable Robot Learning"
+      project_excerpt: "Yujian Dong, Jinqi Wei, Yang Xiao."
+      img: ":design_science_post.jpg"
+      img_title: "Design Science for Reproducible and Shareable Robot Learning poster"
+      date: "2022-06-01"
+      post: |
+        Proposed a novel method for reproducible and shareable robot learning by focusing on rich and intuitive representation, processing, and storage of manipulation data. This was achieved through the [DeepClaw](https://me336.ancorasir.com/?page_id=312) system that features a unified data storage format, easily accessible web-based software, and open-source, low-cost hardware for teleoperation and data collection.
+
+    - type: research
+      project_name: "Automated Robotic Waste Sorting"
+      date: "2021-05-27"
+      img: ":workspace_setup.png"
+      img_title: "workspace setup"
+      post: |
+
+        - [GitHub](https://github.com/Bardreamaster/ME336-Yellow-Team-Project)
+
+        Designed and implemented an automated robotic waste sorting line with visual recognition. Improved sorting efficiency with a throw method rather than a traditional pick-and-place approach.
+
+        ## Demo Video
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/s47ovT3Vu1s?si=r-UO6IE467hjhCX7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+
+
 ---

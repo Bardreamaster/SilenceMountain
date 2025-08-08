@@ -58,8 +58,29 @@ page_data:
       color: "oklch(0.6426 0.1751 148.76)"
 
   list:
+    - project_name: "Hand Tracking & PaXini DexH13 Robot Hand"
+      type: work
+      project_excerpt: "PaXini"
+      date: "2025-03-05"
+      img: ":mwc_hand.png"
+      post: |
+        Control robot hand with any camera by recognizing hand gestures.
+
+        ## Demo Video
+
+        Showed on The Mobile World Congress (MWC) 2025 with Honor(a Chinese smartphone manufacturer).
+
+        - Bilibili
+
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114149174612651&bvid=BV12TQHYuEeC&cid=28827912513&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=300 width="80%"></iframe>
+
+        - YouTube
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/8TTFJpAT584?si=uPx_T_A1dzjhC4VA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
     - project_name: "Dora Depalletizer"
       type: work
+      project_excerpt: "Dorabot"
       img: ":layer_depalletizing.jpg"
       img_title: "Dora Depalletizer"
       date: "2023-09-01"
@@ -70,10 +91,10 @@ page_data:
         ## Demo Video
 
         ### Depalletizing by layer
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=214440726&bvid=BV1Ga411j7Ck&cid=730826047&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=214440726&bvid=BV1Ga411j7Ck&cid=730826047&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"  height=300 width="80%"></iframe>
 
         ### Depalletizing by row
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=683577867&bvid=BV13S4y1w7Lm&cid=713979829&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=683577867&bvid=BV13S4y1w7Lm&cid=713979829&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"  height=300 width="80%"></iframe>
 
     - type: research
       project_name: "Design Science for Reproducible and Shareable Robot Learning"
@@ -86,6 +107,7 @@ page_data:
 
     - type: research
       project_name: "Automated Robotic Waste Sorting"
+      project_excerpt: "ME336 Collaborative Robot Learning"
       date: "2021-05-27"
       img: ":workspace_setup.png"
       img_title: "workspace setup"

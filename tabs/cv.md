@@ -47,6 +47,10 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 
 ## EDUCATION
 
+**University of Bologna**                                                Bologna, Italy
+
+Master of Artificial Intelligence                                                                     2025/9 - Present
+
 **Southern University of Science and Technology (SUSTech)**                                                Shenzhen, China
 
 Bachelor of Engineering in Robotics Engineering                                                                     2018/8 – 2022/7

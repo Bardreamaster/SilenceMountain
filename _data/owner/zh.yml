@@ -50,7 +50,7 @@ meta_common_description: "魏锦启的博客。"
 contacts:
   - github: "Bardreamaster"
   - email: "changshanshi@outlook.com"
-  #- linkedin: ""
+  - linkedin: "jinqi-wei-b0b5321ba"
   #- twitter: ""
   #- mastodon: ""
   #- instagram: ""
@@ -58,6 +58,7 @@ contacts:
   #- facebook: ""
 # to add more, check the _data/const/contact.yml file
 #  - your_new_contact: ""
+  - bilibili: "65587148"
 
 # make sure one of comment engine is enabled in _data/conf/posts.yml file
 comments:

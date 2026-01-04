@@ -37,6 +37,9 @@ youtube:
 facebook:
   icon: "fa fa-facebook"
   url: "https://www.facebook.com"
+bilibili:
+  icon: "/assets/img/default/bilibili-fill.svg"
+  url: "https://space.bilibili.com"
 # add your new contact
 # your_new_contact:
 #   icon: "fa fa-font"

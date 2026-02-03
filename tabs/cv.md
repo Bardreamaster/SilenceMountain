@@ -57,7 +57,7 @@ Bachelor of Engineering in Robotics Engineering                                 
 
 * Advised by Prof. Chaoyang, Song and Study in [Bionic Design \+ Learning Lab](https://bionicdl.ancorasir.com/).
 * SUSTech **First Prize** in Comprehensive Design for the 2021-2022 Academic Year (1/33).
-* **Outstanding Undergraduate Graduation Design** of the SUSTech in 2022\.
+* **Outstanding Undergraduate Graduation Design(Thesis)** of the SUSTech in 2022\.
 
 ## WORK EXPERIENCE
 

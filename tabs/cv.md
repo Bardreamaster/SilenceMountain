@@ -49,11 +49,11 @@ PDF is avalible here: [weijinqi-cv.pdf](https://weijinqi.com/assets/files/weijin
 
 **University of Bologna**                                                Bologna, Italy
 
-Master of Artificial Intelligence                                                                     2025/9 - Present
+Master of Science in Artificial Intelligence                                                                     2025.09 – 2027.07 (Expected)
 
 **Southern University of Science and Technology (SUSTech)**                                                Shenzhen, China
 
-Bachelor of Engineering in Robotics Engineering                                                                     2018/8 – 2022/7
+Bachelor of Engineering in Robotics Engineering                                                                     2018.08 – 2022.07
 
 * Advised by Prof. Chaoyang, Song and Study in [Bionic Design \+ Learning Lab](https://bionicdl.ancorasir.com/).
 * SUSTech **First Prize** in Comprehensive Design for the 2021-2022 Academic Year (1/33).
@@ -63,7 +63,7 @@ Bachelor of Engineering in Robotics Engineering                                 
 
 **PaXini Technology (Shenzhen) Co., Ltd.**                                                                               Shenzhen, China
 
-Robotics Software Engineer                                                                                                     2023/10 – 2025/7
+Robotics Software Engineer                                                                                                     2023.10 – 2025.07
 
 * Developed humanoid & Teleoperation algorithm, data collection and  imitation learning.
 * Mentored junior engineers and contributed to the team's growth through technical interviews.
@@ -73,7 +73,7 @@ Robotics Software Engineer                                                      
 
 **Dorabot Inc.**                                                                                                                              Shenzhen, China
 
-Robotics Software Engineer                                                                                                       2022/8 – 2023/9
+Robotics Software Engineer                                                                                                       2022.08 – 2023.09
 
 * Developed industry warehouse (de)palletizing application.
 
@@ -82,19 +82,19 @@ Robotics Software Engineer                                                      
 **PaXini Technology (Shenzhen) Co., Ltd.**						    Shenzhen, China
 
 Robotics Software Engineer
-**Humanoid Teleoperation**                                                                                                   2023.12 – 2025.7
+**Humanoid Teleoperation**                                                                                                   2023.12 – 2025.07
 
 * Designed and implemented full-stack teleoperation software framework for whole-body teleoperation. Demonstrated at World Robot Conference 2024\.
 * Built a complete Requirements-Verification-Development-Test-CI/CD process and deployed to a 70-person development team.
 
-**Multimodal Data Collection for Imitation Learning**				     2025.2 – 2025.7
+**Multimodal Data Collection for Imitation Learning**				     2025.02 – 2025.07
 
 * Used multi-model data collection devices and designed a data process pipeline to collect manipulation information for robot imitation learning. Deployed in PaXini Super EID Factory.
 * Fine-tune(full) openpi models on cloud server and inference locally to control different robots. Applied to the Procter & Gamble (P\&G) production process.
 
 **Dorabot Inc.**										    Shenzhen, China
 
-Robotics Software Engineer                                                                                                        2022.7 – 2023.9
+Robotics Software Engineer                                                                                                        2022.08 – 2023.09
 
 * Developed large-scale (de)palletizing application using heavy-duty KUKA robots and Mixed Integer Programs (MIPs) for industry automated warehouses, achieving a processing speed of up to 1200 boxes per hour per single robot.
 * Maintained a (de)palletizing showcase and algorithm verification platform using Yaskawa robots with containerized CI/CD, enabling 24/7 continuous operation.
@@ -102,26 +102,26 @@ Robotics Software Engineer                                                      
 **Ningquan Science and Technology Inc. & SUSTech. Comprehensive Design**		    Shenzhen, China
 
 Algorithm Engineer
-**Design Science for Reproducible and Shareable Robot Learning**                                   2021.9 – 2022.6
+**Design Science for Reproducible and Shareable Robot Learning**                                   2021.09 – 2022.06
 
 * Proposed a novel method for reproducible and shareable robot learning by focusing on rich and intuitive representation, processing, and storage of manipulation data. This was achieved through the [DeepClaw](https://me336.ancorasir.com/?page_id=312) system that features a unified data storage format, easily accessible web-based software, and open-source, low-cost hardware for teleoperation and data collection.
 * Published papers on method and tools from this project in ICARM 2024 and Materials & Design. And used in ME336 Collaborative Robot Learning from 2022 to 2024\.
 
 **BionicDL Lab, SUSTech**								    Shenzhen, China
 
-Algorithm Engineer									     2021.1 – 2021.6
+Algorithm Engineer									     2021.01 – 2021.06
 
-* Course Project (ME336 Collaborative Robot Learning). \[[GitHub Repo](https://github.com/Bardreamaster/ME336-Yellow-Team-Project)\]
+* Course Project (ME336 Collaborative Robot Learning). [[GitHub Repo](https://github.com/Bardreamaster/ME336-Yellow-Team-Project)]
 * Designed and implemented an automated robotic waste sorting line with visual recognition. Improved sorting efficiency with a throw method rather than a traditional pick-and-place approach.
 
 **DJI RoboMaster University Championship**						    Shenzhen, China
 
-Electronics Hardware Team Lead                                                                                             2019.6 – 2020.10
+Electronics Hardware Team Lead                                                                                             2019.06 – 2020.10
 
 * Developed robot [main control board](https://github.com/Bardreamaster/Chasis), [supercapacitors and power control modules](https://github.com/Bardreamaster/SuperCapacitor/tree/main) for the whole robot control and communication.
 * RoboMaster2020 University Championship **National Third Prize**
 
-Mechanical Team Member & Financial Manager                                                                     2018.10 – 2019.5
+Mechanical Team Member & Financial Manager                                                                     2018.10 – 2019.05
 
 * Contributed to the structural design of the infantry robot (wheeled robot that fires high-speed spherical projectiles).
 * Responsible for full-season budget (Over 200,000 CNY / 30,000 USD) planning and management.
@@ -131,13 +131,13 @@ Mechanical Team Member & Financial Manager                                      
 
 [**Robook**](https://www.robook.org/) **(Robotics Handbook)**
 
-Founder, Maintainer								                 2023.4 – present
+Founder, Maintainer								                 2023.04 – present
 
 * A robotics handbook for beginners. Contents include introductions to robotics, robotics competitions, and undergraduate research opportunities. Achieved 40000+ views and comments.
 
 [**ROS2 Chinese Documentation**](https://ros2docs.robook.org/humble/index.html)
 
-Maintainer                  									    2024.3 – present
+Maintainer                  									    2024.03 – present
 
 * High-quality, manually proofread ROS2 Chinese documents with annotations.
 

@@ -80,7 +80,7 @@ Robotics Software Engineer                                                      
 
 ## 科研与项目经历
 
-**帕西尼感知科技**						                                                  中国，深圳
+**[帕西尼感知科技](https://paxini.com/)**						                                                  中国，深圳
 
 Robotics Software Engineer
 **人形机器人遥操作**                                                                                                              2023.12 – 2025.07

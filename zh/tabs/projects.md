@@ -78,6 +78,8 @@ page_data:
 
           <iframe width="560" height="315" src="https://www.youtube.com/embed/Ho28PQ5h5DM?si=swaHTWb1XARBFwrS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+        PaXini Tech Youtube Channel: https://www.youtube.com/@PaXini
+
     - project_name: "Dora Depalletizer"
       type: work
       project_excerpt: "Dorabot"

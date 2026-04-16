@@ -61,7 +61,7 @@ Bachelor of Engineering in Robotics Engineering                                 
 
 ## WORK EXPERIENCE
 
-**PaXini Technology (Shenzhen) Co., Ltd.**                                                                               Shenzhen, China
+**[PaXini Technology](https://paxini.com/us/) (Shenzhen) Co., Ltd.**                                                                               Shenzhen, China
 
 Robotics Software Engineer                                                                                                     2023.10 – 2025.07
 

@@ -70,15 +70,15 @@ page_data:
 
         Showed on The Mobile World Congress (MWC) 2025 with Honor(a Chinese smartphone manufacturer).
 
-        - Bilibili
-
-          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114149174612651&bvid=BV12TQHYuEeC&cid=28827912513&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=300 width="80%"></iframe>
+        PaXini Tech Youtube Channel: <https://www.youtube.com/@PaXini>
 
         - YouTube
 
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Ho28PQ5h5DM?si=swaHTWb1XARBFwrS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/FGvRfWnz9BY?si=j5dA7aakITAFuHlS&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-        PaXini Tech Youtube Channel: https://www.youtube.com/@PaXini
+        - Bilibili
+
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114149174612651&bvid=BV12TQHYuEeC&cid=28827912513&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height=300 width="80%"></iframe>
 
     - project_name: "Dora Depalletizer"
       type: work

@@ -2,7 +2,7 @@
 // so the rest of the code can be reused as a template.
 
 export interface NavItem {
-  /** Path relative to the language root, e.g. "/posts/" */
+  /** Path relative to the language root, e.g. "/posts/", or a full URL for another site */
   href: string;
   label: string;
 }
@@ -57,6 +57,7 @@ const config = {
         { href: '/projects/', label: 'Projects' },
         { href: '/cv/', label: 'CV' },
         { href: '/links/', label: 'Links' },
+        { href: 'https://silvermoon.weijinqi.com', label: 'Notes' },
       ],
       ui: {
         recentPosts: 'Recent posts',
@@ -82,6 +83,7 @@ const config = {
         { href: '/projects/', label: '项目' },
         { href: '/cv/', label: '简历' },
         { href: '/links/', label: '链接' },
+        { href: 'https://silvermoon.weijinqi.com', label: '笔记' },
       ],
       ui: {
         recentPosts: '最近文章',

@@ -18,6 +18,7 @@ export function localeFromParam(param: string | undefined): Locale {
 
 /** Build a URL inside a locale: href('zh', '/posts/') -> '/zh/posts/' */
 export function href(locale: Locale, path = '/'): string {
+  if (/^[a-z]+:/i.test(path)) return path; // external link
   const clean = path.startsWith('/') ? path : `/${path}`;
   return locale === defaultLocale ? clean : `/${locale}${clean}`;
 }

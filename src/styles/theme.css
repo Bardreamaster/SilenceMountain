@@ -1,0 +1,54 @@
+/*
+ * Design tokens. Change colours, fonts and widths here; the rest of the CSS
+ * only uses these variables.
+ */
+:root {
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-serif: "Times New Roman", Times, "Songti SC", "SimSun", "Noto Serif CJK SC", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-size: 1.0625rem;
+  --line-height: 1.75;
+  --content-width: 42rem;
+  --cv-width: 50rem;
+  --gutter: 1.25rem;
+  --radius: 6px;
+
+  /*
+   * Colours are written in OKLCH: oklch(lightness chroma hue).
+   * Lightness is perceptually even, so light and dark themes differ mainly in L.
+   * To re-colour the site, change the two hues and the accent chroma below.
+   */
+  --accent-hue: 297;      /* 297 = deep purple; 170 = 黛青 blue-green; ~35 = 朱砂 vermilion */
+  --accent-chroma: 0.14;
+  --ink-hue: 255;         /* tint of greys and text */
+
+  /* light: paper and ink */
+  --bg: oklch(99% 0.003 95);
+  --fg: oklch(25% 0.012 var(--ink-hue));
+  --muted: oklch(54% 0.014 var(--ink-hue));
+  --border: oklch(91% 0.004 95);
+  --accent: oklch(44% var(--accent-chroma) var(--accent-hue));
+  --code-bg: oklch(96.5% 0.004 95);
+}
+
+/* dark: follows the system unless the visitor picked a theme */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: oklch(20% 0.008 var(--ink-hue));
+    --fg: oklch(91% 0.006 95);
+    --muted: oklch(70% 0.012 var(--ink-hue));
+    --border: oklch(31% 0.008 var(--ink-hue));
+    --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
+    --code-bg: oklch(24% 0.008 var(--ink-hue));
+  }
+}
+:root[data-theme="dark"] {
+  --bg: oklch(20% 0.008 var(--ink-hue));
+  --fg: oklch(91% 0.006 95);
+  --muted: oklch(70% 0.012 var(--ink-hue));
+  --border: oklch(31% 0.008 var(--ink-hue));
+  --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
+  --code-bg: oklch(24% 0.008 var(--ink-hue));
+}

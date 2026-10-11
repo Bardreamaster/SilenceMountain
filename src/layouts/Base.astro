@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+import site, { type Locale } from '../site.config';
+import { href, t } from '../lib/i18n';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  alternates?: Partial<Record<Locale, string>>;
+  /** Set for articles so link previews show the right type */
+  ogType?: 'website' | 'article';
+  /** Share-card image; defaults to the language's generated card */
+  ogImage?: string;
+}
+const { locale, title, description, alternates = {}, ogType = 'website', ogImage = `/og/site/${locale}.png` } = Astro.props;
+const L = t(locale);
+const fullTitle = title ? `${title} · ${L.title}` : L.title;
+const desc = description ?? L.description;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+<!doctype html>
+<html lang={L.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    {Object.entries(alternates).map(([l, url]) => (
+      <link rel="alternate" hreflang={site.locales[l as Locale].htmlLang} href={new URL(url!, site.url).href} />
+    ))}
+    <link rel="alternate" type="application/rss+xml" title={L.title} href={href(locale, '/rss.xml')} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:title" content={title ?? L.title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, site.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="oklch(99% 0.003 95)" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="oklch(20% 0.008 255)" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash
+      try {
+        var s = localStorage.getItem('theme');
+        if (s) document.documentElement.dataset.theme = s;
+      } catch (e) {}
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <Header locale={locale} alternates={alternates} />
+    <main>
+      <div class="wrap"><slot /></div>
+    </main>
+    <Footer locale={locale} />
+    <script is:inline>
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        var root = document.documentElement;
+        var dark = root.dataset.theme
+          ? root.dataset.theme === 'dark'
+          : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+      });
+    </script>
+    {site.cloudflareAnalyticsToken && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>
+    )}
+  </body>
+</html>

@@ -1,0 +1,42 @@
+/* Résumé layout, modelled on a Google Docs CV. Loaded only on pages with layout: cv.
+   Uses the variables from src/styles/theme.css. */
+.cv {
+  max-width: var(--cv-width);
+  margin: 0 auto;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.cv h1 { text-align: center; font-size: 2.1rem; margin: 0 0 0.2rem; }
+.cv h1 + p, .cv .cv-contact { text-align: center; margin: 0 0 1rem; }
+.cv h2 {
+  font-size: 1.45rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 1.4rem 0 0.7rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid var(--fg);
+}
+.cv h3, .cv h4 { font-size: 1rem; margin: 0.8rem 0 0; font-weight: 700; }
+.cv h4 { margin-top: 0.2rem; padding-left: 1.5rem; }
+.cv p { margin: 0; }
+.cv ul { margin: 0.1rem 0 0.2rem; padding-left: 2.6rem; }
+.cv h4 + p + ul, .cv h4 + ul { padding-left: 3rem; }
+.cv li { margin: 0; }
+.cv-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.cv-row > :last-child { font-weight: 400; text-align: right; margin-left: auto; }
+.cv-pdf { font-family: var(--font-sans); font-size: 0.875rem; text-align: right; margin-bottom: 1rem; }
+
+@media (max-width: 30rem) {
+  .cv ul { padding-left: 1.3rem; }
+  .cv h4 { padding-left: 0.6rem; }
+  .cv h4 + p + ul, .cv h4 + ul { padding-left: 1.6rem; }
+}
+
+@media print {
+  .site-header, .site-footer, .cv-pdf { display: none; }
+  main { padding: 0; }
+  :root { --bg: #fff; --fg: #000; --accent: oklch(45% 0.2 262); }
+  .cv { max-width: none; font-size: 11pt; }
+  @page { margin: 1.5cm 1.8cm; }
+}

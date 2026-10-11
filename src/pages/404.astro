@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import { href, locales, t, defaultLocale } from '../lib/i18n';
+---
+<Base locale={defaultLocale} title="404">
+  <h1>404</h1>
+  {locales.map((l) => (
+    <p lang={t(l).htmlLang}>{t(l).ui.notFound} <a href={href(l)}>{t(l).ui.backHome}</a></p>
+  ))}
+</Base>

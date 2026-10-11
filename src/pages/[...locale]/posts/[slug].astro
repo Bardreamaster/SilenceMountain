@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { formatDate, splitId } from '../../../lib/i18n';
+import { translationsOf } from '../../../lib/content';
+import site from '../../../site.config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', (p) => !(import.meta.env.PROD && p.data.draft));
+  return posts.map((post) => {
+    const { locale, slug } = splitId(post.id);
+    return { params: { locale: locale === site.defaultLocale ? undefined : locale, slug }, props: { post } };
+  });
+}
+const { post } = Astro.props;
+const { locale, slug } = splitId(post.id);
+const { Content } = await render(post);
+const alternates = await translationsOf('posts', post);
+---
+<Base locale={locale} title={post.data.title} description={post.data.description} alternates={alternates} ogType="article" ogImage={`/og/posts/${locale}/${slug}.png`}>
+  <article>
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <div class="meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, locale)}</time>
+        {post.data.tags.length > 0 && <span>{post.data.tags.map((tag) => `#${tag}`).join(' ')}</span>}
+      </div>
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+</Base>

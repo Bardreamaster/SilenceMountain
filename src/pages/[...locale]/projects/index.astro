@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import { localeFromParam, localeParams, t } from '../../../lib/i18n';
+import { entriesIn, entryUrl } from '../../../lib/content';
+
+export const getStaticPaths = localeParams;
+const locale = localeFromParam(Astro.params.locale);
+const L = t(locale);
+const projects = (await entriesIn('projects', locale)).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured),
+);
+const title = L.nav.find((n) => n.href === '/projects/')?.label ?? L.ui.projects;
+---
+<Base locale={locale} title={title}>
+  <h1>{title}</h1>
+  <ul class="project-list">
+    {projects.map((p) => {
+      const link = p.data.url ?? entryUrl('projects', p.id);
+      return (
+        <li class="project">
+          {p.data.cover && (
+            <a href={link} tabindex="-1">
+              <Image src={p.data.cover} alt={p.data.coverAlt ?? p.data.title} widths={[480, 800]} sizes="(max-width: 44rem) 100vw, 42rem" />
+            </a>
+          )}
+          <h2><a href={link}>{p.data.title}</a></h2>
+          <p class="muted small">{[p.data.category, p.data.date.getUTCFullYear()].filter(Boolean).join(' · ')}</p>
+          <p>{p.data.summary}</p>
+          {p.data.url && <p class="small"><a href={p.data.url}>{L.ui.visitSite} ↗</a></p>}
+        </li>
+      );
+    })}
+  </ul>
+</Base>

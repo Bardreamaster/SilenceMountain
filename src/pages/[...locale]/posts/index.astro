@@ -1,0 +1,22 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import { localeFromParam, localeParams, t } from '../../../lib/i18n';
+import { entriesIn } from '../../../lib/content';
+
+export const getStaticPaths = localeParams;
+const locale = localeFromParam(Astro.params.locale);
+const L = t(locale);
+const posts = await entriesIn('posts', locale);
+const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+const title = L.nav.find((n) => n.href === '/posts/')?.label ?? L.ui.allPosts;
+---
+<Base locale={locale} title={title}>
+  <h1>{title}</h1>
+  {years.map((y) => (
+    <section>
+      <h2 class="year">{y}</h2>
+      <PostList posts={posts.filter((p) => p.data.date.getUTCFullYear() === y)} locale={locale} />
+    </section>
+  ))}
+</Base>

@@ -1,0 +1,24 @@
+---
+import site, { type Locale } from '../site.config';
+import { href, t } from '../lib/i18n';
+import Icon from './Icon.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const L = t(locale);
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <span>
+      © {year} {L.author}
+      {site.license && <> · <a href={site.license.href} rel="license">{site.license.label}</a></>}
+    </span>
+    <span class="socials">
+      {site.socials.map((s) => (
+        <a href={s.href} title={s.label} rel="me"><Icon name={s.icon} label={s.label} /></a>
+      ))}
+      <a href={href(locale, '/rss.xml')} title={L.ui.rss}><Icon name="rss" label={L.ui.rss} /></a>
+    </span>
+  </div>
+</footer>

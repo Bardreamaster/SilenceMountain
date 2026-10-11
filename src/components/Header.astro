@@ -1,0 +1,46 @@
+---
+import site, { type Locale } from '../site.config';
+import { href, locales, t } from '../lib/i18n';
+import Icon from './Icon.astro';
+
+interface Props {
+  locale: Locale;
+  /** Translations of the current page; other locales fall back to their home page */
+  alternates?: Partial<Record<Locale, string>>;
+}
+const { locale, alternates = {} } = Astro.props;
+const L = t(locale);
+const current = Astro.url.pathname.replace(/\/?$/, '/');
+const others = locales.filter((l) => l !== locale);
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href={href(locale)}>{L.title}</a>
+    <nav class="site-nav" aria-label="Main">
+      {L.nav.map((item) => {
+        const url = href(locale, item.href);
+        return <a href={url} aria-current={current.startsWith(url) ? 'page' : undefined}>{item.label}</a>;
+      })}
+    </nav>
+    <div class="tools">
+      {others.map((l) => (
+        <a href={alternates[l] ?? href(l)} hreflang={site.locales[l].htmlLang} lang={site.locales[l].htmlLang}>
+          {site.locales[l].label}
+        </a>
+      ))}
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label={L.ui.toggleTheme} title={L.ui.toggleTheme}>
+        <span class="if-light"><Icon name="moon" /></span>
+        <span class="if-dark"><Icon name="sun" /></span>
+      </button>
+    </div>
+  </div>
+</header>
+<style is:global>
+  .if-dark { display: none; }
+  :root[data-theme="dark"] .if-dark { display: inline; }
+  :root[data-theme="dark"] .if-light { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .if-dark { display: inline; }
+    :root:not([data-theme="light"]) .if-light { display: none; }
+  }
+</style>

@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../site.config';
+import { entryUrl } from '../lib/content';
+import { formatDate } from '../lib/i18n';
+
+interface Props { posts: CollectionEntry<'posts'>[]; locale: Locale }
+const { posts, locale } = Astro.props;
+---
+<ul class="post-list">
+  {posts.map((p) => (
+    <li>
+      <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, locale)}</time>
+      <a href={entryUrl('posts', p.id)}>{p.data.title}</a>
+    </li>
+  ))}
+</ul>

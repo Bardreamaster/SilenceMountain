@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { splitId } from '../../lib/i18n';
+import { translationsOf } from '../../lib/content';
+import site from '../../site.config';
+
+// Every file in src/content/pages/<locale>/ becomes /<slug>/ (home.md is the home page intro).
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages
+    .filter((p) => splitId(p.id).slug !== 'home')
+    .map((page) => {
+      const { locale, slug } = splitId(page.id);
+      return { params: { locale: locale === site.defaultLocale ? undefined : locale, page: slug }, props: { entry: page } };
+    });
+}
+const { entry } = Astro.props;
+const { locale } = splitId(entry.id);
+const { Content } = await render(entry);
+const alternates = await translationsOf('pages', entry);
+const isCv = entry.data.layout === 'cv';
+---
+<Base locale={locale} title={entry.data.title} description={entry.data.description} alternates={alternates}>
+  <Fragment slot="head">{isCv && <link rel="stylesheet" href="/cv.css" />}</Fragment>
+  {isCv ? (
+    <article class="cv">
+      {entry.data.pdf && <p class="cv-pdf"><a href={entry.data.pdf}>PDF ↓</a></p>}
+      <Content />
+    </article>
+  ) : (
+    <article>
+      <h1>{entry.data.title}</h1>
+      <div class="prose"><Content /></div>
+    </article>
+  )}
+</Base>

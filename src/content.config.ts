@@ -61,6 +61,8 @@ const life = defineCollection({
       end: z.coerce.date().optional(),
       type: z.enum(['travel', 'museum', 'event', 'city', 'hobby', 'book', 'film']),
       place: z.string().optional(),
+      /** Where it happened, as [latitude, longitude]; puts the entry on the globe */
+      coords: z.tuple([z.number(), z.number()]).optional(),
       /** Books and films: 1–5 */
       rating: z.number().min(1).max(5).optional(),
       photos: z.array(image()).default([]),

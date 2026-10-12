@@ -15,6 +15,7 @@ const types = Object.keys(L.ui.lifeTypes) as (keyof typeof L.ui.lifeTypes)[];
 const present = types.filter((ty) => entries.some((e) => e.data.type === ty));
 const years = [...new Set(entries.map((e) => e.data.date.getUTCFullYear()))];
 const compact = new Set(['book', 'film']);
+const hasGlobe = entries.some((e) => e.data.coords);
 
 const fmt = (d: Date) =>
   d.toLocaleDateString(L.htmlLang, { year: 'numeric', month: '2-digit', timeZone: 'UTC' });
@@ -28,7 +29,9 @@ const items = await Promise.all(
   })),
 );
 ---
-<Base locale={locale} title={title}>
+<Base locale={locale} title={title} wide={hasGlobe}>
+<div class:list={['life', { 'with-globe': hasGlobe }]}>
+ <div class="life-main">
   <h1>{title}</h1>
 
   {/* Filter without JavaScript: radio buttons + :has() */}
@@ -39,16 +42,24 @@ const items = await Promise.all(
     ))}
   </div>
 
+  {years.length > 1 && (
+    <nav class="year-jump" aria-label={locale === 'zh' ? '跳到年份' : 'Jump to year'}>
+      {years.map((y) => <a href={`#y${y}`}>{y}</a>)}
+    </nav>
+  )}
+
+  <div id="life-list">
   {years.map((y) => (
-    <section class="life-year">
-      <h2 class="year">{y}</h2>
+    <section class="life-year" data-year={y}>
+      <h2 class="year" id={`y${y}`}>{y}</h2>
       <ol class="life-list">
         {items
           .filter(({ entry }) => entry.data.date.getUTCFullYear() === y)
           .map(({ entry, Content, large }) => {
             const d = entry.data;
             return (
-              <li class:list={['life-item', `t-${d.type}`, { compact: compact.has(d.type) }]} data-type={d.type}>
+              <li class:list={['life-item', `t-${d.type}`, { compact: compact.has(d.type) }]} data-type={d.type}
+                data-lat={d.coords?.[0]} data-lng={d.coords?.[1]}>
                 <div class="life-meta">
                   <span class="life-type">{L.ui.lifeTypes[d.type]}</span>
                   <time datetime={d.date.toISOString()}>
@@ -78,9 +89,42 @@ const items = await Promise.all(
       </ol>
     </section>
   ))}
+  </div>
+ </div>
+ {hasGlobe && (
+   <aside class="globe-wrap">
+     <canvas id="globe" aria-label={locale === 'zh' ? '地球：点击地点跳到对应条目，拖动旋转' : 'Globe: click a place to jump to its entries, drag to turn'}></canvas>
+   </aside>
+ )}
+</div>
 </Base>
 
+<script>
+  import { initGlobe } from '../../../scripts/globe';
+  const canvas = document.getElementById('globe') as HTMLCanvasElement | null;
+  const list = document.getElementById('life-list');
+  if (canvas && list) initGlobe(canvas, list);
+</script>
+
 <style>
+  .life.with-globe { display: grid; grid-template-columns: minmax(0, var(--content-width)) minmax(14rem, 1fr); gap: 2.5rem; align-items: start; }
+  .life-main { min-width: 0; }
+  .globe-wrap { position: sticky; top: 4.5rem; }
+  #globe { display: block; width: 100%; max-width: 22rem; aspect-ratio: 1; margin: 0 auto; touch-action: none; cursor: grab; }
+  @media (max-width: 52rem) {
+    .life.with-globe { grid-template-columns: 1fr; gap: 0; }
+    .globe-wrap { position: static; order: -1; padding-top: 0.5rem; }
+    #globe { max-width: 15rem; }
+  }
+
+  .year-jump { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; font-size: 0.875rem; font-variant-numeric: tabular-nums; margin: -0.25rem 0 0.5rem; }
+  .year-jump a { color: var(--muted); text-decoration: none; }
+  .year-jump a:hover { color: var(--accent); }
+
+  .life-item { border-radius: var(--radius); transition: background-color 0.4s; }
+  .life-item.on-globe .life-type { text-decoration: underline; text-underline-offset: 0.25em; }
+  .life-item.picked { background: var(--code-bg); }
+
   .life-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; font-size: 0.9rem; }
   .life-filter label {
     border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.8rem;
@@ -114,4 +158,7 @@ const items = await Promise.all(
 <style is:inline set:html={present
   .map((ty) => `body:has(.life-filter input[value="${ty}"]:checked) .life-item:not([data-type="${ty}"]),` +
     `body:has(.life-filter input[value="${ty}"]:checked) .life-year:not(:has([data-type="${ty}"])){display:none}`)
+  .concat(years.flatMap((y) => present
+    .filter((ty) => !entries.some((e) => e.data.type === ty && e.data.date.getUTCFullYear() === y))
+    .map((ty) => `body:has(.life-filter input[value="${ty}"]:checked) .year-jump a[href="#y${y}"]{display:none}`)))
   .join('')} />

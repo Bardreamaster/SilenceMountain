@@ -7,16 +7,21 @@ interface Props {
   locale: Locale;
   /** Translations of the current page; other locales fall back to their home page */
   alternates?: Partial<Record<Locale, string>>;
+  wide?: boolean;
 }
-const { locale, alternates = {} } = Astro.props;
+const { locale, alternates = {}, wide = false } = Astro.props;
 const L = t(locale);
 const current = Astro.url.pathname.replace(/\/?$/, '/');
 const others = locales.filter((l) => l !== locale);
+const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 ---
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href={href(locale)}>{L.title}</a>
-    <nav class="site-nav" aria-label="Main">
+<header class="site-header" id="site-header">
+  <div class:list={["wrap bar", { wide }]}>
+    <a class="brand" href={href(locale)}>
+      {site.logo && <img src={site.logo} alt="" width="28" height="28" />}
+      <span>{L.title}</span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
       {L.nav.map((item) => {
         const url = href(locale, item.href);
         return <a href={url} aria-current={current.startsWith(url) ? 'page' : undefined}>{item.label}</a>;
@@ -28,19 +33,74 @@ const others = locales.filter((l) => l !== locale);
           {site.locales[l].label}
         </a>
       ))}
-      <button class="theme-toggle" type="button" id="theme-toggle" aria-label={L.ui.toggleTheme} title={L.ui.toggleTheme}>
+      <button class="icon-btn" type="button" id="theme-toggle" aria-label={L.ui.toggleTheme} title={L.ui.toggleTheme}>
         <span class="if-light"><Icon name="moon" /></span>
         <span class="if-dark"><Icon name="sun" /></span>
+      </button>
+      <button class="icon-btn menu-btn" type="button" id="menu-toggle" aria-label={menuLabel} aria-expanded="false" aria-controls="site-nav">
+        <Icon name="menu" />
       </button>
     </div>
   </div>
 </header>
+
+<script is:inline>
+  // Hide the header while scrolling down, show it again when scrolling up
+  (function () {
+    var header = document.getElementById('site-header');
+    var menu = document.getElementById('menu-toggle');
+    var last = scrollY;
+    addEventListener('scroll', function () {
+      var y = scrollY;
+      var open = header.classList.contains('open');
+      header.classList.toggle('hidden', !open && y > last && y > 80);
+      header.classList.toggle('scrolled', y > 8);
+      last = y;
+    }, { passive: true });
+    menu.addEventListener('click', function () {
+      var open = header.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+  })();
+</script>
+
 <style is:global>
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: transform 0.25s ease, border-color 0.25s;
+  }
+  .site-header.scrolled { border-bottom-color: var(--border); }
+  .site-header.hidden { transform: translateY(-100%); }
+  @media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
+
+  .site-header .bar { display: flex; align-items: center; gap: 0.5rem 1.25rem; min-height: 3.5rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.5rem; margin-right: auto; font-weight: 700; font-size: 1.15rem; color: var(--fg); text-decoration: none; }
+  .brand img { filter: var(--logo-filter); border-radius: 0; }
+  .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.95rem; }
+  .site-nav a { color: var(--muted); text-decoration: none; }
+  .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--fg); }
+  .tools { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; }
+  .tools a { color: var(--muted); text-decoration: none; }
+  .icon-btn { background: none; border: 0; padding: 0.25rem; cursor: pointer; color: var(--muted); display: inline-flex; line-height: 1; }
+  .icon-btn:hover { color: var(--fg); }
+  .menu-btn { display: none; }
+
   .if-dark { display: none; }
   :root[data-theme="dark"] .if-dark { display: inline; }
   :root[data-theme="dark"] .if-light { display: none; }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) .if-dark { display: inline; }
     :root:not([data-theme="light"]) .if-light { display: none; }
+  }
+
+  /* Phones: menu items fold into a vertical list behind the menu button */
+  @media (max-width: 40rem) {
+    .site-header .bar { flex-wrap: wrap; }
+    .menu-btn { display: inline-flex; }
+    .site-nav { display: none; order: 3; width: 100%; flex-direction: column; gap: 0; padding-bottom: 0.5rem; }
+    .site-header.open .site-nav { display: flex; }
+    .site-nav a { padding: 0.55rem 0; border-top: 1px solid var(--border); font-size: 1rem; }
   }
 </style>

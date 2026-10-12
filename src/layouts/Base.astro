@@ -14,8 +14,10 @@ interface Props {
   ogType?: 'website' | 'article';
   /** Share-card image; defaults to the language's generated card */
   ogImage?: string;
+  /** Wider content area, for pages with a side panel */
+  wide?: boolean;
 }
-const { locale, title, description, alternates = {}, ogType = 'website', ogImage = `/og/site/${locale}.png` } = Astro.props;
+const { locale, title, description, alternates = {}, ogType = 'website', ogImage = `/og/site/${locale}.png`, wide = false } = Astro.props;
 const L = t(locale);
 const fullTitle = title ? `${title} · ${L.title}` : L.title;
 const desc = description ?? L.description;
@@ -57,11 +59,11 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <slot name="head" />
   </head>
   <body>
-    <Header locale={locale} alternates={alternates} />
+    <Header locale={locale} alternates={alternates} wide={wide} />
     <main>
-      <div class="wrap"><slot /></div>
+      <div class:list={["wrap", { wide }]}><slot /></div>
     </main>
-    <Footer locale={locale} />
+    <Footer locale={locale} wide={wide} />
     <script is:inline>
       document.getElementById('theme-toggle').addEventListener('click', function () {
         var root = document.documentElement;

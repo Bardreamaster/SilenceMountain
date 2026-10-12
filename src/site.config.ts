@@ -62,7 +62,7 @@ const config = {
         { href: '/life/', label: 'Life' },
         { href: '/cv/', label: 'CV' },
         { href: '/links/', label: 'Links' },
-        { href: 'https://silvermoon.weijinqi.com', label: 'Notes' },
+        // { href: 'https://silvermoon.weijinqi.com', label: 'Notes' },
       ],
       ui: {
         recentPosts: 'Recent posts',
@@ -92,7 +92,7 @@ const config = {
         { href: '/life/', label: '生活' },
         { href: '/cv/', label: '简历' },
         { href: '/links/', label: '链接' },
-        { href: 'https://silvermoon.weijinqi.com', label: '笔记' },
+        // { href: 'https://silvermoon.weijinqi.com', label: '笔记' },
       ],
       ui: {
         recentPosts: '最近文章',
@@ -123,6 +123,9 @@ const config = {
   license: { label: 'CC BY-SA 4.0', href: 'https://creativecommons.org/licenses/by-sa/4.0/' } as
     | { label: string; href: string }
     | null,
+
+  /** Logo next to the site name: a file in public/, or '' to hide. Dark ink on transparent works best. */
+  logo: '/logo.png',
 
   /** Avatar shown on the home page and in share cards: a file in src/assets/, or '' to hide */
   avatar: 'avatar.jpg',

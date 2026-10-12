@@ -12,6 +12,7 @@
   --line-height: 1.75;
   --content-width: 42rem;
   --cv-width: 50rem;
+  --wide-width: 66rem;
   --gutter: 1.25rem;
   --radius: 6px;
 
@@ -31,6 +32,9 @@
   --border: oklch(91% 0.004 95);
   --accent: oklch(44% var(--accent-chroma) var(--accent-hue));
   --code-bg: oklch(96.5% 0.004 95);
+  --logo-filter: none;
+  --land: oklch(87% 0.01 95);
+  --accent-soft: oklch(78% 0.09 var(--accent-hue));
 }
 
 /* dark: follows the system unless the visitor picked a theme */
@@ -42,6 +46,9 @@
     --border: oklch(31% 0.008 var(--ink-hue));
     --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
     --code-bg: oklch(24% 0.008 var(--ink-hue));
+    --logo-filter: invert(1);
+    --land: oklch(37% 0.01 var(--ink-hue));
+    --accent-soft: oklch(52% 0.1 var(--accent-hue));
   }
 }
 :root[data-theme="dark"] {
@@ -51,4 +58,7 @@
   --border: oklch(31% 0.008 var(--ink-hue));
   --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
   --code-bg: oklch(24% 0.008 var(--ink-hue));
+  --logo-filter: invert(1);
+  --land: oklch(37% 0.01 var(--ink-hue));
+  --accent-soft: oklch(52% 0.1 var(--accent-hue));
 }

@@ -2,7 +2,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Locale } from '../site.config';
 import { href, locales, splitId } from './i18n';
 
-type Name = 'posts' | 'pages' | 'projects';
+type Name = 'posts' | 'pages' | 'projects' | 'life';
 
 const isProd = import.meta.env.PROD;
 
@@ -19,7 +19,7 @@ export async function entriesIn<N extends Name>(name: N, locale: Locale) {
     });
 }
 
-const base: Record<Name, string> = { posts: '/posts/', pages: '/', projects: '/projects/' };
+const base: Record<Name, string> = { posts: '/posts/', pages: '/', projects: '/projects/', life: '/life/' };
 
 export function entryUrl(name: Name, id: string) {
   const { locale, slug } = splitId(id);

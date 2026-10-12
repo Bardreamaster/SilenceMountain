@@ -1,0 +1,117 @@
+---
+import { render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import { localeFromParam, localeParams, t } from '../../../lib/i18n';
+import { entriesIn } from '../../../lib/content';
+
+export const getStaticPaths = localeParams;
+const locale = localeFromParam(Astro.params.locale);
+const L = t(locale);
+const entries = await entriesIn('life', locale);
+const title = L.nav.find((n) => n.href === '/life/')?.label ?? 'Life';
+
+const types = Object.keys(L.ui.lifeTypes) as (keyof typeof L.ui.lifeTypes)[];
+const present = types.filter((ty) => entries.some((e) => e.data.type === ty));
+const years = [...new Set(entries.map((e) => e.data.date.getUTCFullYear()))];
+const compact = new Set(['book', 'film']);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString(L.htmlLang, { year: 'numeric', month: '2-digit', timeZone: 'UTC' });
+
+const items = await Promise.all(
+  entries.map(async (e) => ({
+    entry: e,
+    Content: (await render(e)).Content,
+    // Full-size version opened when a thumbnail is clicked
+    large: await Promise.all(e.data.photos.map((p) => getImage({ src: p, width: Math.min(p.width, 1800) }))),
+  })),
+);
+---
+<Base locale={locale} title={title}>
+  <h1>{title}</h1>
+
+  {/* Filter without JavaScript: radio buttons + :has() */}
+  <div class="life-filter" role="radiogroup">
+    <label><input type="radio" name="life-type" value="all" checked /> {L.ui.all}</label>
+    {present.map((ty) => (
+      <label><input type="radio" name="life-type" value={ty} /> {L.ui.lifeTypes[ty]}</label>
+    ))}
+  </div>
+
+  {years.map((y) => (
+    <section class="life-year">
+      <h2 class="year">{y}</h2>
+      <ol class="life-list">
+        {items
+          .filter(({ entry }) => entry.data.date.getUTCFullYear() === y)
+          .map(({ entry, Content, large }) => {
+            const d = entry.data;
+            return (
+              <li class:list={['life-item', `t-${d.type}`, { compact: compact.has(d.type) }]} data-type={d.type}>
+                <div class="life-meta">
+                  <span class="life-type">{L.ui.lifeTypes[d.type]}</span>
+                  <time datetime={d.date.toISOString()}>
+                    {fmt(d.date)}{d.end ? ` – ${fmt(d.end)}` : d.type === 'city' ? ` – ${L.ui.present}` : ''}
+                  </time>
+                </div>
+                <div class="life-body">
+                  <h3>
+                    {d.link ? <a href={d.link}>{d.title}</a> : d.title}
+                    {d.rating && <span class="rating" aria-label={`${d.rating}/5`}>{'★'.repeat(d.rating)}{'☆'.repeat(5 - d.rating)}</span>}
+                  </h3>
+                  {d.place && <p class="muted small">{d.place}</p>}
+                  <div class="prose"><Content /></div>
+                  {d.photos.length > 0 && (
+                    <div class="life-photos">
+                      {d.photos.map((p, i) => (
+                        <a href={large[i].src}>
+                          <Image src={p} alt={`${d.title} ${i + 1}`} width={240} height={240} fit="cover" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+      </ol>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .life-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; font-size: 0.9rem; }
+  .life-filter label {
+    border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.8rem;
+    cursor: pointer; color: var(--muted); user-select: none;
+  }
+  .life-filter input { position: absolute; opacity: 0; pointer-events: none; }
+  .life-filter label:has(input:checked) { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  .life-filter label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .life-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; }
+  .life-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .life-item.compact .life-body h3 { font-weight: 500; }
+  .life-item.compact .prose { color: var(--muted); font-size: 0.95rem; }
+  .life-meta { display: flex; flex-direction: column; font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .life-type { color: var(--accent); font-weight: 600; }
+  .life-body { min-width: 0; }
+  .life-body h3 { margin: 0; font-size: 1.05rem; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
+  .life-body .muted { margin: 0.1rem 0 0; }
+  .life-body .prose :global(p) { margin: 0.3rem 0; }
+  .rating { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.05em; }
+  .life-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); gap: 0.4rem; margin-top: 0.6rem; }
+  .life-photos img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; }
+
+  @media (max-width: 30rem) {
+    .life-item { grid-template-columns: 1fr; gap: 0.2rem; }
+    .life-meta { flex-direction: row; gap: 0.75rem; }
+  }
+</style>
+
+{/* Filter rules: show only the chosen type, and hide years that have none of it */}
+<style is:inline set:html={present
+  .map((ty) => `body:has(.life-filter input[value="${ty}"]:checked) .life-item:not([data-type="${ty}"]),` +
+    `body:has(.life-filter input[value="${ty}"]:checked) .life-year:not(:has([data-type="${ty}"])){display:none}`)
+  .join('')} />

@@ -28,6 +28,10 @@ export interface LocaleConfig {
     notFound: string;
     backHome: string;
     rss: string;
+    all: string;
+    /** Names of the life-timeline types */
+    lifeTypes: Record<'travel' | 'museum' | 'event' | 'city' | 'hobby' | 'book' | 'film', string>;
+    present: string;
   };
   dateFormat: Intl.DateTimeFormatOptions;
 }
@@ -55,6 +59,7 @@ const config = {
       nav: [
         { href: '/posts/', label: 'Posts' },
         { href: '/projects/', label: 'Projects' },
+        { href: '/life/', label: 'Life' },
         { href: '/cv/', label: 'CV' },
         { href: '/links/', label: 'Links' },
         { href: 'https://silvermoon.weijinqi.com', label: 'Notes' },
@@ -69,6 +74,9 @@ const config = {
         notFound: 'Page not found.',
         backHome: 'Back to home',
         rss: 'RSS',
+        all: 'All',
+        lifeTypes: { travel: 'Travel', museum: 'Museums', event: 'Events', city: 'Cities', hobby: 'Hobbies', book: 'Books', film: 'Films' },
+        present: 'now',
       },
       dateFormat: { year: 'numeric', month: 'short', day: 'numeric' },
     },
@@ -81,6 +89,7 @@ const config = {
       nav: [
         { href: '/posts/', label: '文章' },
         { href: '/projects/', label: '项目' },
+        { href: '/life/', label: '生活' },
         { href: '/cv/', label: '简历' },
         { href: '/links/', label: '链接' },
         { href: 'https://silvermoon.weijinqi.com', label: '笔记' },
@@ -95,6 +104,9 @@ const config = {
         notFound: '页面不存在。',
         backHome: '返回首页',
         rss: 'RSS',
+        all: '全部',
+        lifeTypes: { travel: '旅行', museum: '博物馆', event: '活动', city: '城市', hobby: '爱好', book: '书', film: '电影' },
+        present: '至今',
       },
       dateFormat: { year: 'numeric', month: '2-digit', day: '2-digit' },
     },

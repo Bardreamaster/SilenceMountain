@@ -34,6 +34,31 @@ Images: put them next to the content (e.g. `src/content/posts/img/`) and link wi
 Projects: add `url: https://name.project.weijinqi.com` for a project that has its own site; its card
 then links there instead of to a page on this site. `cover`, `category` and `featured` are optional.
 
+### Life timeline
+
+`src/content/life/<lang>/<slug>.md` feeds `/life/`, grouped by year with a type filter (no JavaScript).
+
+```yaml
+---
+title: Bologna
+type: city          # travel | museum | event | city | hobby | book | film
+date: 2025-09-01
+end: 2026-07-01     # optional; a city without `end` shows "now"
+place: Bologna, Italy
+rating: 4           # books and films, 1–5
+photos:
+  - ../img/bologna-1.jpg
+---
+One or two sentences.
+```
+
+Prepare photos first, which shrinks them and removes GPS and other metadata:
+
+```sh
+npm run photos -- ~/Pictures/trip            # writes to src/content/life/img/
+npm run photos -- a.heic b.jpg --size 2000   # long edge in px (default 2400)
+```
+
 ### CV
 
 `src/content/pages/<lang>/cv.md` uses `layout: cv`, a résumé style modelled on the PDF. In that file,

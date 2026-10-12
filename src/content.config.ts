@@ -50,4 +50,24 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { posts, pages, projects };
+// Life timeline: travel, museums, events, cities, hobbies, books, films.
+const life = defineCollection({
+  loader: glob({ base: './src/content/life', pattern: '*/**/*.{md,mdx}' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.coerce.date(),
+      /** For things that span time, e.g. living in a city */
+      end: z.coerce.date().optional(),
+      type: z.enum(['travel', 'museum', 'event', 'city', 'hobby', 'book', 'film']),
+      place: z.string().optional(),
+      /** Books and films: 1–5 */
+      rating: z.number().min(1).max(5).optional(),
+      photos: z.array(image()).default([]),
+      link: z.string().url().optional(),
+      translationKey: z.string().optional(),
+      draft: z.boolean().default(false),
+    }),
+});
+
+export const collections = { posts, pages, projects, life };

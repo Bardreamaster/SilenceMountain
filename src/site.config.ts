@@ -136,6 +136,14 @@ const config = {
    */
   ogColors: { background: '#fcfcf9', foreground: '#1e2227', muted: '#696f77', accent: '#5c3c95' },
 
+  /**
+   * Web font loaded on top of the system fonts, or null for system fonts only.
+   * Put its family name first in --font-sans in theme.css. With skipWhenSaving, visitors
+   * on data saver, a 2G-class connection or (where the browser tells) mobile data keep
+   * the system font. Browsers that don't report this, like Safari, always get the web font.
+   */
+  webFont: { css: '/fonts/misans/misans.css', skipWhenSaving: true } as { css: string; skipWhenSaving: boolean } | null,
+
   /** Number of posts listed on the home page */
   homePostCount: 8,
 

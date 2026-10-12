@@ -56,6 +56,21 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
         if (s) document.documentElement.dataset.theme = s;
       } catch (e) {}
     </script>
+    {site.webFont && (
+      <link id="webfont" rel="stylesheet" href={site.webFont.css} media="print" data-skip-when-saving={site.webFont.skipWhenSaving ? '' : undefined} />
+    )}
+    {site.webFont && (
+      <script is:inline>
+        // Turn the web font on unless the visitor is saving data. Without JS it stays off.
+        (function () {
+          var l = document.getElementById('webfont');
+          var c = navigator.connection;
+          var saving = c && (c.saveData || /2g/.test(c.effectiveType || '') || c.type === 'cellular');
+          if (l.hasAttribute('data-skip-when-saving') && saving) l.remove();
+          else l.media = 'all';
+        })();
+      </script>
+    )}
     <slot name="head" />
   </head>
   <body>

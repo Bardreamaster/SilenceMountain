@@ -3,7 +3,7 @@
  * only uses these variables.
  */
 :root {
-  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+  --font-sans: "MiSans", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
   --font-serif: "Times New Roman", Times, "Songti SC", "SimSun", "Noto Serif CJK SC", serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;

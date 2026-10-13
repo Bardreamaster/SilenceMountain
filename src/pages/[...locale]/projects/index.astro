@@ -23,7 +23,7 @@ const tags = [...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)! |
   {tags.length > 1 && (
     <Filter name="projects" allLabel={L.ui.all} attr="tags" options={tags.map((tag) => ({ value: tag, label: tag }))} />
   )}
-  <ul class="project-list">
+  <ul class="entry-list">
     {projects.map((p) => {
       const link = p.data.url ?? entryUrl('projects', p.id);
       return (

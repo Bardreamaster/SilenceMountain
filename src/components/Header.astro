@@ -24,7 +24,7 @@ const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 <header class="site-header" id="site-header" data-pagefind-ignore="all">
   <div class:list={["wrap bar", { wide }]}>
     <a class="brand" href={href(locale)}>
-      {site.logo && <span class="logo" style={`--logo: url(${site.logo})`} aria-hidden="true"></span>}
+      {site.logo && <span class="logo" style={`-webkit-mask-image: url(${site.logo}); mask-image: url(${site.logo})`} aria-hidden="true"></span>}
       <span>{L.title}</span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
@@ -84,8 +84,10 @@ const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 
   .site-header .bar { display: flex; align-items: center; gap: 0.5rem 1.25rem; min-height: 3.5rem; }
   .brand { display: inline-flex; align-items: center; gap: 0.5rem; margin-right: auto; font-weight: 700; font-size: 1.15rem; color: var(--fg); text-decoration: none; }
-  /* The logo file is used as a mask, so it takes the text colour in both themes */
-  .logo { width: 28px; height: 28px; flex: none; background: currentColor; -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
+  /* The logo file is used as a mask, so it takes the text colour in both themes.
+     The mask image is set inline on the element, not through a CSS variable:
+     a url() inside a variable resolves against the stylesheet, not the page. */
+  .logo { width: 28px; height: 28px; flex: none; background: currentColor; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
   .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.95rem; }
   .site-nav a { color: var(--muted); text-decoration: none; }
   .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--fg); }

@@ -107,14 +107,14 @@ main { padding: 1rem 0 3rem; min-height: 60vh; }
 .prose > :first-child { margin-top: 0; }
 
 /* projects */
-.project-list { display: grid; padding: 0; margin: 0; list-style: none; }
-/* A hairline between entries so each reads as its own item */
-.project { padding: 1.75rem 0; border-top: 1px solid var(--border); }
-.project:first-child { border-top: 0; padding-top: 0.5rem; }
+/* Lists of entries (projects, life): every entry sits under a hairline, so each reads as its own item */
+.entry-list { list-style: none; padding: 0; margin: 0; }
+.entry-list > li { padding: 1.25rem 0; border-top: 1px solid var(--border); }
 .project-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
 .tag { color: var(--accent); cursor: pointer; }
 .tag::before { content: '#'; opacity: 0.6; }
 .tag:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.project { padding-block: 1.75rem; }
 .project h2 { margin: 0.6rem 0 0.2rem; font-size: 1.15rem; }
 .project p { margin: 0.2rem 0; }
 .project img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }

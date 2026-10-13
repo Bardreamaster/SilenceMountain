@@ -57,7 +57,7 @@ const items = await Promise.all(
   {years.map((y) => (
     <section class="life-year" data-year={y}>
       <h2 class="year" id={`y${y}`}>{y}</h2>
-      <ol class="life-list">
+      <ol class="entry-list">
         {items
           .filter(({ entry }) => entry.data.date.getUTCFullYear() === y)
           .map(({ entry, Content, large }) => {
@@ -142,10 +142,7 @@ const items = await Promise.all(
   .life-item.picked { background: var(--code-bg); }
 
 
-  .life-list { list-style: none; padding: 0; margin: 0; }
-  /* A hairline between entries so each reads as its own item */
-  .life-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 1.25rem 0.5rem; border-top: 1px solid var(--border); }
-  .life-item:first-child { border-top: 0; padding-top: 0.25rem; }
+  .life-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding-inline: 0.5rem; }
   .life-item.compact .life-body h3 { font-weight: 500; }
   .life-item.compact .prose { color: var(--muted); font-size: 0.95rem; }
   .life-meta { display: flex; flex-direction: column; font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }

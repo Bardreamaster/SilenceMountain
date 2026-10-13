@@ -1,17 +1,24 @@
 ---
 import site, { type Locale } from '../site.config';
-import { href, locales, t } from '../lib/i18n';
+import { defaultLocale, href, locales, t } from '../lib/i18n';
 import Icon from './Icon.astro';
 
 interface Props {
   locale: Locale;
-  /** Translations of the current page; other locales fall back to their home page */
+  /**
+   * Translations of an entry page (post, project, page). Locales without one fall back to
+   * the section the entry sits in. Leave it out on list pages: they exist in every locale.
+   */
   alternates?: Partial<Record<Locale, string>>;
   wide?: boolean;
 }
-const { locale, alternates = {}, wide = false } = Astro.props;
+const { locale, alternates, wide = false } = Astro.props;
 const L = t(locale);
 const current = Astro.url.pathname.replace(/\/?$/, '/');
+// The same page in another language: the translation, else the same path (list pages),
+// else the section the entry belongs to
+const rest = locale === defaultLocale ? current : current.slice(`/${locale}`.length) || '/';
+const sameIn = (l: Locale) => alternates?.[l] ?? href(l, alternates ? rest.replace(/[^/]+\/$/, '') : rest);
 const others = locales.filter((l) => l !== locale);
 const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 ---
@@ -29,7 +36,7 @@ const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
     </nav>
     <div class="tools">
       {others.map((l) => (
-        <a href={alternates[l] ?? href(l)} hreflang={site.locales[l].htmlLang} lang={site.locales[l].htmlLang}>
+        <a href={sameIn(l)} hreflang={site.locales[l].htmlLang} lang={site.locales[l].htmlLang}>
           {site.locales[l].label}
         </a>
       ))}

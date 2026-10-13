@@ -50,11 +50,14 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta name="theme-color" content="oklch(99% 0.003 95)" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="oklch(22% 0.016 310)" media="(prefers-color-scheme: dark)" />
     <script is:inline>
-      // Apply the saved theme before first paint to avoid a flash
-      try {
-        var s = localStorage.getItem('theme');
+      // Apply the saved theme before first paint to avoid a flash. window.name is a fallback
+      // that survives navigation in the same tab where storage is blocked (e.g. sandboxed previews).
+      (function () {
+        var s;
+        try { s = localStorage.getItem('theme'); } catch (e) {}
+        if (!s) { var m = /(?:^|;)theme=(light|dark)/.exec(window.name); if (m) s = m[1]; }
         if (s) document.documentElement.dataset.theme = s;
-      } catch (e) {}
+      })();
     </script>
     {site.webFont && (
       <link id="webfont" rel="stylesheet" href={site.webFont.css} media="print" data-skip-when-saving={site.webFont.skipWhenSaving ? '' : undefined} />
@@ -74,7 +77,7 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <slot name="head" />
   </head>
   <body>
-    <Header locale={locale} alternates={alternates} wide={wide} />
+    <Header locale={locale} alternates={Astro.props.alternates} wide={wide} />
     <main>
       <div class:list={["wrap", { wide }]}><slot /></div>
     </main>
@@ -87,6 +90,7 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           : matchMedia('(prefers-color-scheme: dark)').matches;
         root.dataset.theme = dark ? 'light' : 'dark';
         try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+        window.name = window.name.replace(/(?:^|;)theme=(light|dark)/, '') + ';theme=' + root.dataset.theme;
       });
     </script>
     {site.cloudflareAnalyticsToken && (

@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import site from './src/site.config.ts';
 import { rehypeCv } from './src/plugins/rehype-cv.mjs';
+import search from './src/integrations/search.mjs';
 
 export default defineConfig({
   site: site.url,
@@ -16,6 +17,7 @@ export default defineConfig({
         locales: Object.fromEntries(Object.entries(site.locales).map(([code, l]) => [code, l.htmlLang])),
       },
     }),
+    search(site),
   ],
   markdown: {
     rehypePlugins: [rehypeCv],

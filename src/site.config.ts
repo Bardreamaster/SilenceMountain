@@ -160,6 +160,15 @@ const config = {
    */
   aiCrawlers: 'allow' as 'allow' | 'block',
 
+  /**
+   * Site search (Pagefind, built after `astro build`).
+   * allLanguages: true searches every language from every page (content here is not a 1:1 translation);
+   * false keeps one index per language. A combined index is processed with the rules of one language:
+   * a CJK one if any locale is CJK (so Chinese text gets split into words), otherwise the default locale.
+   * The trade-off is that English words are no longer reduced to their stem ("robots" won't find "robot").
+   */
+  search: { allLanguages: true },
+
   /** Cloudflare Web Analytics token; leave empty to disable (no cookies either way) */
   cloudflareAnalyticsToken: '',
 };

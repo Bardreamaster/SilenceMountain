@@ -28,6 +28,11 @@ body {
 a { color: var(--accent); text-underline-offset: 0.2em; }
 a:hover { text-decoration-thickness: 2px; }
 
+/* Purple marks links inside text, interaction (hover, focus, the selected filter) and a few action links.
+   Links that are titles (in a heading, or a list of posts) read as text and only turn purple on hover. */
+:is(h1, h2, h3, h4) a, .post-list a { color: inherit; text-decoration: none; }
+:is(h1, h2, h3, h4) a:hover, .post-list a:hover { color: var(--accent); text-decoration: underline; }
+
 h1, h2, h3, h4 { line-height: 1.3; margin: 2em 0 0.6em; }
 h1 { font-size: 1.75rem; margin-top: 0.5em; }
 h2 { font-size: 1.35rem; }
@@ -94,8 +99,6 @@ main { padding: 1rem 0 3rem; min-height: 60vh; }
 
 /* post list */
 .post-list { list-style: none; padding: 0; margin: 0; }
-.post-list a { text-decoration: none; }
-.post-list a:hover { text-decoration: underline; }
 .post-list li { display: flex; gap: 1rem; padding: 0.35rem 0; align-items: baseline; }
 .post-list time { flex: none; color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; min-width: 6.5em; }
 .year { font-size: 1rem; color: var(--muted); margin: 2rem 0 0.5rem; }
@@ -111,9 +114,9 @@ main { padding: 1rem 0 3rem; min-height: 60vh; }
 .entry-list { list-style: none; padding: 0; margin: 0; }
 .entry-list > li { padding: 1.25rem 0; border-top: 1px solid var(--border); }
 .project-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
-.tag { color: var(--accent); cursor: pointer; }
+.tag { color: var(--muted); cursor: pointer; }
 .tag::before { content: '#'; opacity: 0.6; }
-.tag:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.tag:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 0.2em; }
 .project { padding-block: 1.75rem; }
 .project h2 { margin: 0.6rem 0 0.2rem; font-size: 1.15rem; }
 .project p { margin: 0.2rem 0; }

@@ -2,7 +2,7 @@
 title: "Design Science for Reproducible and Shareable Robot Learning"
 summary: "Yujian Dong, Jinqi Wei, Yang Xiao."
 date: "2022-06-01"
-category: "Research & Academic"
+tags: ["Research", "Robot learning"]
 cover: ../img/design_science_post.jpg
 coverAlt: "Design Science for Reproducible and Shareable Robot Learning poster"
 translationKey: design-science-robot-learning

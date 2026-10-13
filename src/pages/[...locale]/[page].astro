@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Cv from '../../components/Cv.astro';
 import { splitId } from '../../lib/i18n';
 import { translationsOf } from '../../lib/content';
 import site from '../../site.config';
@@ -22,14 +23,10 @@ const alternates = await translationsOf('pages', entry);
 const isCv = entry.data.layout === 'cv';
 ---
 <Base locale={locale} title={entry.data.title} description={entry.data.description} alternates={alternates}>
-  <Fragment slot="head">{isCv && <link rel="stylesheet" href="/cv.css" />}</Fragment>
   {isCv ? (
-    <article class="cv">
-      {entry.data.pdf && <p class="cv-pdf"><a href={entry.data.pdf}>PDF ↓</a></p>}
-      <Content />
-    </article>
+    <div data-pagefind-body><Cv pdf={entry.data.pdf}><Content /></Cv></div>
   ) : (
-    <article>
+    <article data-pagefind-body>
       <h1>{entry.data.title}</h1>
       <div class="prose"><Content /></div>
     </article>

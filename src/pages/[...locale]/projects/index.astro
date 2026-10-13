@@ -3,6 +3,8 @@ import { Image } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import { localeFromParam, localeParams, t } from '../../../lib/i18n';
 import { entriesIn, entryUrl } from '../../../lib/content';
+import Filter from '../../../components/Filter.astro';
+import { filterId, filterKey } from '../../../lib/filter';
 
 export const getStaticPaths = localeParams;
 const locale = localeFromParam(Astro.params.locale);
@@ -11,21 +13,31 @@ const projects = (await entriesIn('projects', locale)).sort(
   (a, b) => Number(b.data.featured) - Number(a.data.featured),
 );
 const title = L.nav.find((n) => n.href === '/projects/')?.label ?? L.ui.projects;
+// Tags in use, most common first
+const counts = new Map<string, number>();
+projects.forEach((p) => p.data.tags.forEach((tag) => counts.set(tag, (counts.get(tag) ?? 0) + 1)));
+const tags = [...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)! || a.localeCompare(b));
 ---
 <Base locale={locale} title={title}>
   <h1>{title}</h1>
+  {tags.length > 1 && (
+    <Filter name="projects" allLabel={L.ui.all} attr="tags" options={tags.map((tag) => ({ value: tag, label: tag }))} />
+  )}
   <ul class="project-list">
     {projects.map((p) => {
       const link = p.data.url ?? entryUrl('projects', p.id);
       return (
-        <li class="project">
+        <li class="project" data-tags={p.data.tags.map(filterKey).join(' ')}>
           {p.data.cover && (
             <a href={link} tabindex="-1">
               <Image src={p.data.cover} alt={p.data.coverAlt ?? p.data.title} widths={[480, 800]} sizes="(max-width: 44rem) 100vw, 42rem" />
             </a>
           )}
           <h2><a href={link}>{p.data.title}</a></h2>
-          <p class="muted small">{[p.data.category, p.data.date.getUTCFullYear()].filter(Boolean).join(' · ')}</p>
+          <p class="project-meta small">
+            <span class="muted">{p.data.date.getUTCFullYear()}</span>
+            {p.data.tags.map((tag) => <label class="tag" for={filterId('projects', tag)}>{tag}</label>)}
+          </p>
           <p>{p.data.summary}</p>
           {p.data.url && <p class="small"><a href={p.data.url}>{L.ui.visitSite} ↗</a></p>}
         </li>

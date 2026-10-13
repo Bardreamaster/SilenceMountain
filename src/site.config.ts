@@ -124,8 +124,11 @@ const config = {
     | { label: string; href: string }
     | null,
 
-  /** Logo next to the site name: a file in public/, or '' to hide. Dark ink on transparent works best. */
-  logo: '/logo.png',
+  /**
+   * Logo next to the site name: a file in public/, or '' to hide. Its shape is used as a mask
+   * and painted in the text colour, so use one-colour artwork on transparent (SVG is best).
+   */
+  logo: '/logo.svg',
 
   /** Avatar shown on the home page and in share cards: a file in src/assets/, or '' to hide */
   avatar: 'avatar.jpg',

@@ -2,6 +2,7 @@
 import site, { type Locale } from '../site.config';
 import { defaultLocale, href, locales, t } from '../lib/i18n';
 import Icon from './Icon.astro';
+import Search from './Search.astro';
 
 interface Props {
   locale: Locale;
@@ -22,10 +23,10 @@ const sameIn = (l: Locale) => alternates?.[l] ?? href(l, alternates ? rest.repla
 const others = locales.filter((l) => l !== locale);
 const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 ---
-<header class="site-header" id="site-header">
+<header class="site-header" id="site-header" data-pagefind-ignore="all">
   <div class:list={["wrap bar", { wide }]}>
     <a class="brand" href={href(locale)}>
-      {site.logo && <img src={site.logo} alt="" width="28" height="28" />}
+      {site.logo && <span class="logo" style={`--logo: url(${site.logo})`} aria-hidden="true"></span>}
       <span>{L.title}</span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
@@ -40,6 +41,7 @@ const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
           {site.locales[l].label}
         </a>
       ))}
+      <Search locale={locale} />
       <button class="icon-btn" type="button" id="theme-toggle" aria-label={L.ui.toggleTheme} title={L.ui.toggleTheme}>
         <span class="if-light"><Icon name="moon" /></span>
         <span class="if-dark"><Icon name="sun" /></span>
@@ -84,7 +86,8 @@ const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 
   .site-header .bar { display: flex; align-items: center; gap: 0.5rem 1.25rem; min-height: 3.5rem; }
   .brand { display: inline-flex; align-items: center; gap: 0.5rem; margin-right: auto; font-weight: 700; font-size: 1.15rem; color: var(--fg); text-decoration: none; }
-  .brand img { filter: var(--logo-filter); border-radius: 0; }
+  /* The logo file is used as a mask, so it takes the text colour in both themes */
+  .logo { width: 28px; height: 28px; flex: none; background: currentColor; -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
   .site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.95rem; }
   .site-nav a { color: var(--muted); text-decoration: none; }
   .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--fg); }

@@ -4,6 +4,8 @@ import { Image, getImage } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import { localeFromParam, localeParams, t } from '../../../lib/i18n';
 import { entriesIn } from '../../../lib/content';
+import Filter from '../../../components/Filter.astro';
+import { filterId } from '../../../lib/filter';
 
 export const getStaticPaths = localeParams;
 const locale = localeFromParam(Astro.params.locale);
@@ -16,6 +18,14 @@ const present = types.filter((ty) => entries.some((e) => e.data.type === ty));
 const years = [...new Set(entries.map((e) => e.data.date.getUTCFullYear()))];
 const compact = new Set(['book', 'film']);
 const hasGlobe = entries.some((e) => e.data.coords);
+
+// Hide years with nothing of the chosen type, in the list and in the year jump
+const groupRules = present
+  .map((ty) => `body:has(#${filterId('life', ty)}:checked) .life-year:not(:has([data-type="${ty}"])){display:none}`)
+  .concat(years.flatMap((y) => present
+    .filter((ty) => !entries.some((e) => e.data.type === ty && e.data.date.getUTCFullYear() === y))
+    .map((ty) => `body:has(#${filterId('life', ty)}:checked) .year-jump a[href="#y${y}"]{display:none}`)))
+  .join('');
 
 const fmt = (d: Date) =>
   d.toLocaleDateString(L.htmlLang, { year: 'numeric', month: '2-digit', timeZone: 'UTC' });
@@ -34,13 +44,8 @@ const items = await Promise.all(
  <div class="life-main">
   <h1>{title}</h1>
 
-  {/* Filter without JavaScript: radio buttons + :has() */}
-  <div class="life-filter" role="radiogroup">
-    <label><input type="radio" name="life-type" value="all" checked /> {L.ui.all}</label>
-    {present.map((ty) => (
-      <label><input type="radio" name="life-type" value={ty} /> {L.ui.lifeTypes[ty]}</label>
-    ))}
-  </div>
+  <Filter name="life" allLabel={L.ui.all} attr="type" extraCss={groupRules}
+    options={present.map((ty) => ({ value: ty, label: L.ui.lifeTypes[ty] }))} />
 
   {years.length > 1 && (
     <nav class="year-jump" aria-label={locale === 'zh' ? '跳到年份' : 'Jump to year'}>
@@ -48,7 +53,7 @@ const items = await Promise.all(
     </nav>
   )}
 
-  <div id="life-list">
+  <div id="life-list" data-pagefind-body>
   {years.map((y) => (
     <section class="life-year" data-year={y}>
       <h2 class="year" id={`y${y}`}>{y}</h2>
@@ -93,7 +98,12 @@ const items = await Promise.all(
  </div>
  {hasGlobe && (
    <aside class="globe-wrap">
-     <canvas id="globe" aria-label={locale === 'zh' ? '地球：点击地点跳到对应条目，拖动旋转' : 'Globe: click a place to jump to its entries, drag to turn'}></canvas>
+     <canvas id="globe" aria-label={locale === 'zh' ? '地球：点击地点跳到对应条目，拖动旋转，放大后展开成平面地图' : 'Globe: click a place to jump to its entries, drag to turn, zoom in to unfold it into a flat map'}></canvas>
+     <div class="globe-zoom" id="globe-zoom">
+       <button type="button" data-zoom="in" aria-label={locale === 'zh' ? '放大' : 'Zoom in'}>+</button>
+       <button type="button" data-zoom="out" aria-label={locale === 'zh' ? '缩小' : 'Zoom out'}>−</button>
+       <button type="button" data-zoom="reset" aria-label={locale === 'zh' ? '回到地球' : 'Back to globe'}>◯</button>
+     </div>
    </aside>
  )}
 </div>
@@ -103,14 +113,20 @@ const items = await Promise.all(
   import { initGlobe } from '../../../scripts/globe';
   const canvas = document.getElementById('globe') as HTMLCanvasElement | null;
   const list = document.getElementById('life-list');
-  if (canvas && list) initGlobe(canvas, list);
+  if (canvas && list) initGlobe(canvas, list, document.getElementById('globe-zoom'));
 </script>
 
 <style>
   .life.with-globe { display: grid; grid-template-columns: minmax(0, var(--content-width)) minmax(14rem, 1fr); gap: 2.5rem; align-items: start; }
   .life-main { min-width: 0; }
   .globe-wrap { position: sticky; top: 4.5rem; }
-  #globe { display: block; width: 100%; max-width: 22rem; aspect-ratio: 1; margin: 0 auto; touch-action: none; cursor: grab; }
+  #globe { display: block; width: 100%; max-width: 22rem; aspect-ratio: 1; margin: 0 auto; touch-action: none; cursor: grab; border-radius: var(--radius); }
+  .globe-zoom { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.5rem; }
+  .globe-zoom button {
+    width: 2rem; height: 2rem; border: 1px solid var(--border); border-radius: 999px; background: var(--bg);
+    color: var(--muted); font: inherit; font-size: 1rem; line-height: 1; cursor: pointer;
+  }
+  .globe-zoom button:hover { color: var(--fg); border-color: var(--muted); }
   @media (max-width: 52rem) {
     .life.with-globe { grid-template-columns: 1fr; gap: 0; }
     .globe-wrap { position: static; order: -1; padding-top: 0.5rem; }
@@ -121,21 +137,15 @@ const items = await Promise.all(
   .year-jump a { color: var(--muted); text-decoration: none; }
   .year-jump a:hover { color: var(--accent); }
 
-  .life-item { border-radius: var(--radius); transition: background-color 0.4s; }
+  .life-item { transition: background-color 0.4s; }
   .life-item.on-globe .life-type { text-decoration: underline; text-underline-offset: 0.25em; }
   .life-item.picked { background: var(--code-bg); }
 
-  .life-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; font-size: 0.9rem; }
-  .life-filter label {
-    border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.8rem;
-    cursor: pointer; color: var(--muted); user-select: none;
-  }
-  .life-filter input { position: absolute; opacity: 0; pointer-events: none; }
-  .life-filter label:has(input:checked) { color: var(--bg); background: var(--accent); border-color: var(--accent); }
-  .life-filter label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .life-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; }
-  .life-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .life-list { list-style: none; padding: 0; margin: 0; }
+  /* A hairline between entries so each reads as its own item */
+  .life-item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 1.25rem 0.5rem; border-top: 1px solid var(--border); }
+  .life-item:first-child { border-top: 0; padding-top: 0.25rem; }
   .life-item.compact .life-body h3 { font-weight: 500; }
   .life-item.compact .prose { color: var(--muted); font-size: 0.95rem; }
   .life-meta { display: flex; flex-direction: column; font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -154,11 +164,3 @@ const items = await Promise.all(
   }
 </style>
 
-{/* Filter rules: show only the chosen type, and hide years that have none of it */}
-<style is:inline set:html={present
-  .map((ty) => `body:has(.life-filter input[value="${ty}"]:checked) .life-item:not([data-type="${ty}"]),` +
-    `body:has(.life-filter input[value="${ty}"]:checked) .life-year:not(:has([data-type="${ty}"])){display:none}`)
-  .concat(years.flatMap((y) => present
-    .filter((ty) => !entries.some((e) => e.data.type === ty && e.data.date.getUTCFullYear() === y))
-    .map((ty) => `body:has(.life-filter input[value="${ty}"]:checked) .year-jump a[href="#y${y}"]{display:none}`)))
-  .join('')} />

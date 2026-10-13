@@ -1,0 +1,75 @@
+---
+// Site search with Pagefind (https://pagefind.app). The index is built after `astro build`
+// and split into small chunks; the search code loads only when the dialog is first opened.
+// Index only what matters: pages mark their main content with data-pagefind-body.
+import Icon from './Icon.astro';
+import type { Locale } from '../site.config';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const label = locale === 'zh' ? '搜索' : 'Search';
+const close = locale === 'zh' ? '关闭' : 'Close';
+---
+<button class="icon-btn" type="button" id="search-open" aria-label={label} title={`${label} (/)`}>
+  <Icon name="search" />
+</button>
+<dialog id="search-dialog" aria-label={label}>
+  <div class="search-head">
+    <span>{label}</span>
+    <button class="icon-btn" type="button" id="search-close" aria-label={close}>✕</button>
+  </div>
+  <div id="search"></div>
+</dialog>
+
+<script is:inline>
+  (function () {
+    var dialog = document.getElementById('search-dialog');
+    var loaded = false;
+    function open() {
+      dialog.showModal();
+      if (loaded) { var i = dialog.querySelector('input'); if (i) i.focus(); return; }
+      loaded = true;
+      var css = document.createElement('link');
+      css.rel = 'stylesheet'; css.href = '/pagefind/pagefind-ui.css';
+      document.head.appendChild(css);
+      var js = document.createElement('script');
+      js.src = '/pagefind/pagefind-ui.js';
+      js.onload = function () {
+        new PagefindUI({ element: '#search', showSubResults: true, showImages: false, resetStyles: false, autofocus: true });
+      };
+      document.head.appendChild(js);
+    }
+    document.getElementById('search-open').addEventListener('click', open);
+    document.getElementById('search-close').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    addEventListener('keydown', function (e) {
+      var t = e.target;
+      if (e.key === '/' && !dialog.open && !(t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement || t.isContentEditable)) {
+        e.preventDefault(); open();
+      }
+    });
+  })();
+</script>
+
+<style is:global>
+  #search-dialog {
+    width: min(42rem, calc(100vw - 2rem)); max-height: min(80vh, 44rem); margin: 8vh auto auto;
+    padding: 1rem 1.25rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--bg); color: var(--fg);
+  }
+  #search-dialog::backdrop { background: oklch(20% 0.02 var(--accent-hue) / 0.45); }
+  .search-head { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  /* Pagefind UI in the site's tokens */
+  #search {
+    --pagefind-ui-scale: 0.85;
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--fg);
+    --pagefind-ui-background: var(--bg);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-tag: var(--code-bg);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 6px;
+    --pagefind-ui-font: var(--font-sans);
+  }
+  #search mark { background: var(--accent-soft); color: inherit; }
+</style>

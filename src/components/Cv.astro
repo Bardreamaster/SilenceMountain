@@ -1,0 +1,15 @@
+---
+// Résumé layout, modelled on a Google Docs CV. Wrap Markdown content in it; lines written
+// as "Left | Right" become two-sided rows (see src/plugins/rehype-cv.mjs).
+import '../styles/cv.css';
+
+interface Props {
+  /** Link to a PDF version, shown top right and hidden when printing */
+  pdf?: string;
+}
+const { pdf } = Astro.props;
+---
+<article class="cv">
+  {pdf && <p class="cv-pdf"><a href={pdf}>PDF ↓</a></p>}
+  <slot />
+</article>

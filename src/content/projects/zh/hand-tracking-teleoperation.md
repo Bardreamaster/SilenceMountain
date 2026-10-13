@@ -2,7 +2,7 @@
 title: "Hand Tracking & Robot Teleoperation"
 summary: "PaXini"
 date: "2025-03-05"
-category: "Work"
+tags: ["工作", "遥操作", "视觉"]
 cover: ../img/mwc_hand.png
 translationKey: hand-tracking-teleoperation
 ---

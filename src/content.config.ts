@@ -39,7 +39,8 @@ const projects = defineCollection({
       title: z.string(),
       summary: z.string(),
       date: z.coerce.date(),
-      category: z.string().optional(),
+      /** Free-form labels; the projects page offers a filter for each one in use */
+      tags: z.array(z.string()).default([]),
       cover: image().optional(),
       coverAlt: z.string().optional(),
       /** External site for big projects, e.g. https://foo.project.weijinqi.com */

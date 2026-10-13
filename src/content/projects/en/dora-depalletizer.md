@@ -2,7 +2,7 @@
 title: "Dora Depalletizer"
 summary: "Dorabot"
 date: "2023-09-01"
-category: "Work"
+tags: ["Work", "Robot arm", "Vision"]
 cover: ../img/layer_depalletizing.jpg
 coverAlt: "Dora Depalletizer"
 translationKey: dora-depalletizer

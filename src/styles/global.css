@@ -107,7 +107,14 @@ main { padding: 1rem 0 3rem; min-height: 60vh; }
 .prose > :first-child { margin-top: 0; }
 
 /* projects */
-.project-list { display: grid; gap: 2rem; padding: 0; list-style: none; }
+.project-list { display: grid; padding: 0; margin: 0; list-style: none; }
+/* A hairline between entries so each reads as its own item */
+.project { padding: 1.75rem 0; border-top: 1px solid var(--border); }
+.project:first-child { border-top: 0; padding-top: 0.5rem; }
+.project-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+.tag { color: var(--accent); cursor: pointer; }
+.tag::before { content: '#'; opacity: 0.6; }
+.tag:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .project h2 { margin: 0.6rem 0 0.2rem; font-size: 1.15rem; }
 .project p { margin: 0.2rem 0; }
 .project img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
@@ -118,3 +125,14 @@ main { padding: 1rem 0 3rem; min-height: 60vh; }
   .avatar { width: 80px; height: 80px; }
   .post-list li { flex-direction: column; gap: 0; }
 }
+
+/* chip filter (src/components/Filter.astro) */
+.filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; font-size: 0.9rem; }
+.filter label {
+  border: 1px solid var(--border); border-radius: 999px; padding: 0.15rem 0.8rem;
+  cursor: pointer; color: var(--muted); user-select: none;
+}
+.filter input { position: absolute; opacity: 0; pointer-events: none; }
+.filter label:hover { border-color: var(--muted); }
+.filter label:has(input:checked) { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.filter label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }

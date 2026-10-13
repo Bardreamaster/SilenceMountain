@@ -1,0 +1,30 @@
+---
+// Chip filter without JavaScript: radio buttons + :has().
+// Items to filter carry data-<attr>="value1 value2" (values from filterKey()); picking a chip
+// hides items that lack that value. Other elements can switch the filter with
+// <label for={filterId(name, value)}>, e.g. a tag on a card.
+import { filterId, filterKey } from '../lib/filter';
+
+interface Props {
+  /** Radio group name, unique on the page */
+  name: string;
+  /** Label of the "show everything" chip */
+  allLabel: string;
+  options: { value: string; label: string }[];
+  /** Data attribute on the items, without "data-" */
+  attr: string;
+  /** Extra CSS appended to the generated rules (e.g. hiding empty groups) */
+  extraCss?: string;
+}
+const { name, allLabel, options, attr, extraCss = '' } = Astro.props;
+const rules = options
+  .map((o) => `body:has(#${filterId(name, o.value)}:checked) [data-${attr}]:not([data-${attr}~="${filterKey(o.value)}"]){display:none}`)
+  .join('');
+---
+<div class="filter" role="radiogroup">
+  <label><input type="radio" name={name} id={filterId(name, 'all')} value="all" checked /> {allLabel}</label>
+  {options.map((o) => (
+    <label><input type="radio" name={name} id={filterId(name, o.value)} value={filterKey(o.value)} /> {o.label}</label>
+  ))}
+</div>
+<style is:inline set:html={rules + extraCss}></style>

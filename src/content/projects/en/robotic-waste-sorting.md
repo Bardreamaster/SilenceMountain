@@ -2,7 +2,7 @@
 title: "Automated Robotic Waste Sorting"
 summary: "ME336 Collaborative Robot Learning"
 date: "2021-05-27"
-category: "Research & Academic"
+tags: ["Course", "Robot arm", "Robot learning"]
 cover: ../img/workspace_setup.png
 coverAlt: "workspace setup"
 translationKey: robotic-waste-sorting

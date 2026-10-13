@@ -1,5 +1,5 @@
-/* Résumé layout, modelled on a Google Docs CV. Loaded only on pages with layout: cv.
-   Uses the variables from src/styles/theme.css. */
+/* Résumé layout, modelled on a Google Docs CV. Imported by src/components/Cv.astro, so it
+   only ships with pages that use that component. Uses the variables from theme.css. */
 .cv {
   max-width: var(--cv-width);
   margin: 0 auto;

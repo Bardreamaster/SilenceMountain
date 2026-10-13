@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://weijinqi.com/sitemap-index.xml

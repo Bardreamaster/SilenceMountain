@@ -5,6 +5,8 @@ import Cv from '../../components/Cv.astro';
 import { splitId } from '../../lib/i18n';
 import { translationsOf } from '../../lib/content';
 import site from '../../site.config';
+import { excerpt, href } from '../../lib/i18n';
+import { profilePage } from '../../lib/schema';
 
 // Every file in src/content/pages/<locale>/ becomes /<slug>/ (home.md is the home page intro).
 export async function getStaticPaths() {
@@ -21,8 +23,10 @@ const { locale } = splitId(entry.id);
 const { Content } = await render(entry);
 const alternates = await translationsOf('pages', entry);
 const isCv = entry.data.layout === 'cv';
+const description = entry.data.description ?? excerpt(entry.body);
+const schema = isCv ? profilePage(locale, href(locale, `/${splitId(entry.id).slug}/`)) : undefined;
 ---
-<Base locale={locale} title={entry.data.title} description={entry.data.description} alternates={alternates}>
+<Base locale={locale} title={entry.data.title} description={description} alternates={alternates} schema={schema}>
   {isCv ? (
     <div data-pagefind-body><Cv pdf={entry.data.pdf}><Content /></Cv></div>
   ) : (

@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { formatDate, splitId } from '../../../lib/i18n';
+import { excerpt, formatDate, href, splitId } from '../../../lib/i18n';
+import { blogPosting } from '../../../lib/schema';
 import { translationsOf } from '../../../lib/content';
 import site from '../../../site.config';
 
@@ -16,8 +17,15 @@ const { post } = Astro.props;
 const { locale, slug } = splitId(post.id);
 const { Content } = await render(post);
 const alternates = await translationsOf('posts', post);
+const description = post.data.description ?? excerpt(post.body);
+const ogImage = `/og/posts/${locale}/${slug}.png`;
+const schema = blogPosting(locale, {
+  title: post.data.title, description, path: href(locale, `/posts/${slug}/`), image: ogImage,
+  published: post.data.date, modified: post.data.updated, tags: post.data.tags,
+});
 ---
-<Base locale={locale} title={post.data.title} description={post.data.description} alternates={alternates} ogType="article" ogImage={`/og/posts/${locale}/${slug}.png`}>
+<Base locale={locale} title={post.data.title} description={description} alternates={alternates} ogType="article" ogImage={ogImage}
+  published={post.data.date} modified={post.data.updated} schema={schema}>
   <article data-pagefind-body>
     <header class="post-header">
       <h1>{post.data.title}</h1>

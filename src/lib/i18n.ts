@@ -32,3 +32,36 @@ export function splitId(id: string): { locale: Locale; slug: string } {
 export function formatDate(date: Date, locale: Locale): string {
   return date.toLocaleDateString(t(locale).htmlLang, { ...t(locale).dateFormat, timeZone: 'UTC' });
 }
+
+/**
+ * The current page in each other language.
+ * `exact` = the same content exists there (a translation, or a list page every language has);
+ * otherwise `url` is the section the entry belongs to, a sensible place to land.
+ * Pass `alternates` on entry pages (posts, projects, pages), leave it out on list pages.
+ */
+export function languageLinks(pathname: string, locale: Locale, alternates?: Partial<Record<Locale, string>>) {
+  const current = pathname.replace(/\/?$/, '/');
+  const rest = locale === defaultLocale ? current : current.slice(`/${locale}`.length) || '/';
+  const out = {} as Record<Locale, { url: string; exact: boolean }>;
+  for (const l of locales) {
+    if (l === locale) out[l] = { url: href(l, rest), exact: true };
+    else if (alternates?.[l]) out[l] = { url: alternates[l]!, exact: true };
+    else if (alternates) out[l] = { url: href(l, rest.replace(/[^/]+\/$/, '')), exact: false };
+    else out[l] = { url: href(l, rest), exact: true };
+  }
+  return out;
+}
+
+/** Plain-text summary of a Markdown body, for pages without a description */
+export function excerpt(markdown = '', length = 140): string {
+  const text = markdown
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/^\s{0,3}(#{1,6}|>|[-*+]|\d+\.)\s+/gm, '')
+    .replace(/[*_`~|]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.length > length ? `${text.slice(0, length).trim()}…` : text;
+}

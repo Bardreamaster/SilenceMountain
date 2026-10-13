@@ -153,6 +153,13 @@ const config = {
   /** Shiki themes for code blocks (https://shiki.style/themes) */
   codeTheme: { light: 'github-light', dark: 'github-dark' },
 
+  /**
+   * Whether AI crawlers (ChatGPT, Claude, Perplexity, Gemini training…) may read the site.
+   * 'allow' also publishes /llms.txt, a plain index of the site for AI tools.
+   * Search engines are always allowed. Cloudflare has its own "block AI bots" switch; keep the two in agreement.
+   */
+  aiCrawlers: 'allow' as 'allow' | 'block',
+
   /** Cloudflare Web Analytics token; leave empty to disable (no cookies either way) */
   cloudflareAnalyticsToken: '',
 };

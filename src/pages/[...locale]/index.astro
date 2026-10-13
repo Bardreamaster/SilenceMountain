@@ -7,6 +7,7 @@ import PostList from '../../components/PostList.astro';
 import site from '../../site.config';
 import { href, localeFromParam, localeParams, t } from '../../lib/i18n';
 import { entriesIn } from '../../lib/content';
+import { website } from '../../lib/schema';
 
 export const getStaticPaths = localeParams;
 const locale = localeFromParam(Astro.params.locale);
@@ -16,7 +17,7 @@ const posts = (await entriesIn('posts', locale)).slice(0, site.homePostCount);
 const intro = await getEntry('pages', `${locale}/home`);
 const Intro = intro ? (await render(intro)).Content : null;
 ---
-<Base locale={locale}>
+<Base locale={locale} schema={website(locale)}>
   {(Intro || avatar) && (
     <section class="intro">
       {avatar && <Image src={avatar} alt={L.author} width={96} height={96} class="avatar" loading="eager" />}

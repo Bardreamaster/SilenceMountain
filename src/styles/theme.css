@@ -21,16 +21,19 @@
    * Lightness is perceptually even, so light and dark themes differ mainly in L.
    * To re-colour the site, change the two hues and the accent chroma below.
    */
-  --accent-hue: 297;      /* 297 = deep purple; 170 = 黛青 blue-green; ~35 = 朱砂 vermilion */
-  --accent-chroma: 0.14;
-  --ink-hue: 255;         /* tint of greys and text */
+  --accent-hue: 309.6;    /* brand purple #6d2597 = oklch(43.09% 0.1779 309.6) */
+  --accent-chroma: 0.1779;
+  --ink-hue: 255;         /* tint of greys and text in light mode */
+  /* Dark mode is a dark grey tinted with the brand hue, never pure black */
+  --night-hue: var(--accent-hue);
+  --night-chroma: 0.016;
 
   /* light: paper and ink */
   --bg: oklch(99% 0.003 95);
   --fg: oklch(25% 0.012 var(--ink-hue));
   --muted: oklch(54% 0.014 var(--ink-hue));
   --border: oklch(91% 0.004 95);
-  --accent: oklch(44% var(--accent-chroma) var(--accent-hue));
+  --accent: oklch(43.09% var(--accent-chroma) var(--accent-hue));
   --code-bg: oklch(96.5% 0.004 95);
   --logo-filter: none;
   --land: oklch(87% 0.01 95);
@@ -40,25 +43,25 @@
 /* dark: follows the system unless the visitor picked a theme */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: oklch(20% 0.008 var(--ink-hue));
-    --fg: oklch(91% 0.006 95);
-    --muted: oklch(70% 0.012 var(--ink-hue));
-    --border: oklch(31% 0.008 var(--ink-hue));
-    --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
-    --code-bg: oklch(24% 0.008 var(--ink-hue));
+    --bg: oklch(22% var(--night-chroma) var(--night-hue));
+    --fg: oklch(91% 0.008 var(--night-hue));
+    --muted: oklch(71% 0.02 var(--night-hue));
+    --border: oklch(33% var(--night-chroma) var(--night-hue));
+    --accent: oklch(77% calc(var(--accent-chroma) * 0.6) var(--accent-hue));
+    --code-bg: oklch(26% var(--night-chroma) var(--night-hue));
     --logo-filter: invert(1);
-    --land: oklch(37% 0.01 var(--ink-hue));
-    --accent-soft: oklch(52% 0.1 var(--accent-hue));
+    --land: oklch(38% 0.02 var(--night-hue));
+    --accent-soft: oklch(52% 0.12 var(--accent-hue));
   }
 }
 :root[data-theme="dark"] {
-  --bg: oklch(20% 0.008 var(--ink-hue));
-  --fg: oklch(91% 0.006 95);
-  --muted: oklch(70% 0.012 var(--ink-hue));
-  --border: oklch(31% 0.008 var(--ink-hue));
-  --accent: oklch(76% calc(var(--accent-chroma) * 0.7) var(--accent-hue));
-  --code-bg: oklch(24% 0.008 var(--ink-hue));
+  --bg: oklch(22% var(--night-chroma) var(--night-hue));
+  --fg: oklch(91% 0.008 var(--night-hue));
+  --muted: oklch(71% 0.02 var(--night-hue));
+  --border: oklch(33% var(--night-chroma) var(--night-hue));
+  --accent: oklch(77% calc(var(--accent-chroma) * 0.6) var(--accent-hue));
+  --code-bg: oklch(26% var(--night-chroma) var(--night-hue));
   --logo-filter: invert(1);
-  --land: oklch(37% 0.01 var(--ink-hue));
-  --accent-soft: oklch(52% 0.1 var(--accent-hue));
+  --land: oklch(38% 0.02 var(--night-hue));
+  --accent-soft: oklch(52% 0.12 var(--accent-hue));
 }

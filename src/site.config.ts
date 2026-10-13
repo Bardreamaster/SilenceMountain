@@ -134,7 +134,7 @@ const config = {
    * Colours of the generated share-card images (og:image).
    * Hex, because the image renderer does not read CSS; keep them close to theme.css.
    */
-  ogColors: { background: '#fcfcf9', foreground: '#1e2227', muted: '#696f77', accent: '#5c3c95' },
+  ogColors: { background: '#fcfcf9', foreground: '#1e2227', muted: '#696f77', accent: '#6d2597' },
 
   /**
    * Web font loaded on top of the system fonts, or null for system fonts only.

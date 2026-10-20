@@ -103,7 +103,8 @@ on your machine. After `package.json` changes, run `docker compose build` and
 
 - Another port: `PORT=3000 docker compose up`.
 - If saving a file doesn't reload the page (some Windows or network-drive setups): `WATCH_POLLING=true docker compose up`.
-- VS Code: with the Dev Containers extension, "Reopen in Container" uses the same setup (`.devcontainer/`).
+- VS Code: with the Dev Containers extension, run "Reopen in Container" (`.devcontainer/`). It uses the same
+  Dockerfile and starts the dev server in a terminal inside VS Code.
 
 ### Without Docker (Node 22, see `.node-version`)
 

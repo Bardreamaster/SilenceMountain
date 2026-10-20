@@ -1,9 +1,17 @@
 {
+  // Same image and mounts as docker-compose.yml, built straight from the Dockerfile.
+  // (Not via docker compose: newer Compose refuses the temporary Dockerfile VS Code generates.)
   "name": "Silence Mountain",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "dev",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
   "workspaceFolder": "/app",
+  // The container's own node_modules (Linux builds), kept in a volume like in docker-compose.yml
+  "mounts": ["source=silencemountain-node_modules,target=/app/node_modules,type=volume"],
+  // Start the dev server in a VS Code terminal each time the window opens (logs stay visible there)
+  "postAttachCommand": "npm run dev -- --host 0.0.0.0",
   "forwardPorts": [4321],
+  "portsAttributes": { "4321": { "label": "Site", "onAutoForward": "openBrowser" } },
+  "containerEnv": { "WATCH_POLLING": "${localEnv:WATCH_POLLING:false}" },
   "customizations": {
     "vscode": { "extensions": ["astro-build.astro-vscode"] }
   }

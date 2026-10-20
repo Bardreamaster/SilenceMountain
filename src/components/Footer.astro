@@ -16,9 +16,10 @@ const year = new Date().getFullYear();
     </span>
     <span class="socials">
       {site.socials.map((s) => (
-        <a href={s.href} title={s.label} rel="me"><Icon name={s.icon} label={s.label} /></a>
+        // Web links open in a new tab; mailto: is left alone (a new tab would just stay blank)
+        <a href={s.href} title={s.label} rel="me" target={s.href.startsWith('http') ? '_blank' : undefined}><Icon name={s.icon} label={s.label} /></a>
       ))}
-      <a href={href(locale, '/rss.xml')} title={L.ui.rss}><Icon name="rss" label={L.ui.rss} /></a>
+      <a href={href(locale, '/rss.xml')} title={L.ui.rss} target="_blank"><Icon name="rss" label={L.ui.rss} /></a>
     </span>
   </div>
 </footer>

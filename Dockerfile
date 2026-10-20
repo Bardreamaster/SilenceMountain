@@ -5,6 +5,13 @@
 ARG NODE_VERSION=22
 FROM node:${NODE_VERSION}-bookworm
 
+# Git LFS, so large files tracked with LFS work inside the container. --system puts the LFS
+# filters in /etc/gitconfig, so they apply to every user and survive a mounted ~/.gitconfig.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git-lfs \
+ && rm -rf /var/lib/apt/lists/* \
+ && git lfs install --system
+
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci

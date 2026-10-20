@@ -3,13 +3,13 @@ import site, { type Locale } from '../site.config';
 import { href, t } from '../lib/i18n';
 import Icon from './Icon.astro';
 
-interface Props { locale: Locale; wide?: boolean }
-const { locale, wide = false } = Astro.props;
+interface Props { locale: Locale }
+const { locale } = Astro.props;
 const L = t(locale);
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class:list={["wrap", { wide }]}>
+  <div class="wrap">
     <span>
       © {year} {L.author}
       {site.license && <> · <a href={site.license.href} rel="license">{site.license.label}</a></>}

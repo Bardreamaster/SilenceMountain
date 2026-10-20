@@ -11,9 +11,8 @@ interface Props {
    * the section the entry sits in. Leave it out on list pages: they exist in every locale.
    */
   alternates?: Partial<Record<Locale, string>>;
-  wide?: boolean;
 }
-const { locale, alternates, wide = false } = Astro.props;
+const { locale, alternates } = Astro.props;
 const L = t(locale);
 const current = Astro.url.pathname.replace(/\/?$/, '/');
 const langs = languageLinks(Astro.url.pathname, locale, alternates);
@@ -22,7 +21,7 @@ const others = locales.filter((l) => l !== locale);
 const menuLabel = locale === 'zh' ? '菜单' : 'Menu';
 ---
 <header class="site-header" id="site-header" data-pagefind-ignore="all">
-  <div class:list={["wrap bar", { wide }]}>
+  <div class="wrap bar">
     <a class="brand" href={href(locale)}>
       {site.logo && <span class="logo" style={`-webkit-mask-image: url(${site.logo}); mask-image: url(${site.logo})`} aria-hidden="true"></span>}
       <span>{L.title}</span>

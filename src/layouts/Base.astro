@@ -97,11 +97,12 @@ const ld = schema && JSON.stringify(Array.isArray(schema) ? schema : [schema]).r
     <slot name="head" />
   </head>
   <body>
-    <Header locale={locale} alternates={Astro.props.alternates} wide={wide} />
+    {/* Header and footer keep the same width on every page so they don't shift between pages; only the content may be wide */}
+    <Header locale={locale} alternates={Astro.props.alternates} />
     <main>
       <div class:list={["wrap", { wide }]}><slot /></div>
     </main>
-    <Footer locale={locale} wide={wide} />
+    <Footer locale={locale} />
     <script is:inline>
       document.getElementById('theme-toggle').addEventListener('click', function () {
         var root = document.documentElement;

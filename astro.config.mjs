@@ -19,6 +19,10 @@ export default defineConfig({
     }),
     search(site),
   ],
+  vite: {
+    // File watching by polling, for setups where file-change events don't reach the dev server (some Docker mounts)
+    server: { watch: { usePolling: process.env.WATCH_POLLING === 'true' } },
+  },
   markdown: {
     rehypePlugins: [rehypeCv],
     shikiConfig: {

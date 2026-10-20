@@ -1,0 +1,10 @@
+{
+  "name": "Silence Mountain",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/app",
+  "forwardPorts": [4321],
+  "customizations": {
+    "vscode": { "extensions": ["astro-build.astro-vscode"] }
+  }
+}

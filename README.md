@@ -87,10 +87,30 @@ Share-card images (`og:image`) are generated at build time for every post under 
 
 ## Commands
 
+### With Docker (nothing to install but Docker)
+
+```sh
+docker compose up                         # live preview at http://localhost:4321
+docker compose run --rm dev npm run build # output in dist/
+docker compose run --rm dev npm install <package>   # add a dependency, then `docker compose build`
+docker compose down
+```
+
+The project folder is mounted into the container, so edit files on your machine as usual and the
+page reloads on save. Dependencies live inside the container (a Docker volume), not in `node_modules/`
+on your machine. After `package.json` changes, run `docker compose build` and
+`docker compose down -v` once so the volume is refreshed.
+
+- Another port: `PORT=3000 docker compose up`.
+- If saving a file doesn't reload the page (some Windows or network-drive setups): `WATCH_POLLING=true docker compose up`.
+- VS Code: with the Dev Containers extension, "Reopen in Container" uses the same setup (`.devcontainer/`).
+
+### Without Docker (Node 22, see `.node-version`)
+
 ```sh
 npm install
 npm run dev       # live preview at http://localhost:4321
-npm run build     # output in dist/
+npm run build     # output in dist/, including the search index
 npm run preview   # serve dist/ locally
 ```
 

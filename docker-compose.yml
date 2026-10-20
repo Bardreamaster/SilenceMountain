@@ -1,0 +1,16 @@
+# Local development in Docker:  docker compose up   then open http://localhost:4321
+services:
+  dev:
+    build: .
+    ports:
+      - "${PORT:-4321}:4321"
+    volumes:
+      - .:/app
+      # Keep the container's own node_modules (Linux builds of sharp, pagefind…) instead of the host's
+      - node_modules:/app/node_modules
+    environment:
+      # Set to true if saved files don't trigger a reload (some Windows / network-drive setups)
+      WATCH_POLLING: ${WATCH_POLLING:-false}
+
+volumes:
+  node_modules:

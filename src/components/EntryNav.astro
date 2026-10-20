@@ -1,0 +1,52 @@
+---
+// Floating "back" and "back to top" buttons for entry pages (posts, projects).
+// Back returns to the page the visitor came from when it is on this site, otherwise to `fallback`
+// (the section's list page), which is also what the link does without JS.
+import type { Locale } from '../site.config';
+import { t } from '../lib/i18n';
+import Icon from './Icon.astro';
+
+interface Props { locale: Locale; fallback: string }
+const { locale, fallback } = Astro.props;
+const L = t(locale);
+---
+<div class="entry-nav" data-pagefind-ignore="all">
+  <a class="icon-btn" href={fallback} id="entry-back" aria-label={L.ui.back} title={L.ui.back}><Icon name="arrow-left" /></a>
+  <a class="icon-btn" href="#top" id="entry-top" aria-label={L.ui.backToTop} title={L.ui.backToTop} hidden><Icon name="arrow-up" /></a>
+</div>
+
+<script>
+  const back = document.getElementById('entry-back') as HTMLAnchorElement;
+  const toTop = document.getElementById('entry-top') as HTMLAnchorElement;
+  back.addEventListener('click', (e) => {
+    if (history.length > 1 && document.referrer.startsWith(location.origin)) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+  toTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  // Back to top only once the visitor has scrolled a screen down
+  const update = () => { toTop.hidden = scrollY < innerHeight; };
+  addEventListener('scroll', update, { passive: true });
+  update();
+</script>
+
+<style is:global>
+  .entry-nav {
+    position: fixed; right: 1rem; bottom: 1.25rem; z-index: 9;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .entry-nav .icon-btn {
+    width: 2.5rem; height: 2.5rem; padding: 0; align-items: center; justify-content: center;
+    border: 1px solid var(--border); border-radius: 50%;
+    background: var(--bg); color: var(--muted);
+    box-shadow: 0 1px 4px oklch(0% 0 0 / 0.08);
+  }
+  .entry-nav .icon-btn:hover { color: var(--fg); border-color: var(--muted); }
+  .entry-nav .icon-btn .icon { width: 1.25em; height: 1.25em; }
+  .entry-nav [hidden] { display: none; }
+  @media print { .entry-nav { display: none; } }
+</style>

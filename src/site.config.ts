@@ -32,6 +32,14 @@ export interface LocaleConfig {
     /** Names of the life-timeline types */
     lifeTypes: Record<'travel' | 'museum' | 'event' | 'city' | 'hobby' | 'book' | 'film', string>;
     present: string;
+    /** Entry pages: table of contents, back and back-to-top buttons */
+    toc: string;
+    back: string;
+    backToTop: string;
+    /** Image viewer */
+    close: string;
+    previous: string;
+    next: string;
   };
   dateFormat: Intl.DateTimeFormatOptions;
 }
@@ -77,6 +85,12 @@ const config = {
         all: 'All',
         lifeTypes: { travel: 'Travel', museum: 'Museums', event: 'Events', city: 'Cities', hobby: 'Hobbies', book: 'Books', film: 'Films' },
         present: 'now',
+        toc: 'Contents',
+        back: 'Back',
+        backToTop: 'Back to top',
+        close: 'Close',
+        previous: 'Previous',
+        next: 'Next',
       },
       dateFormat: { year: 'numeric', month: 'short', day: 'numeric' },
     },
@@ -107,6 +121,12 @@ const config = {
         all: '全部',
         lifeTypes: { travel: '旅行', museum: '博物馆', event: '活动', city: '城市', hobby: '爱好', book: '书', film: '电影' },
         present: '至今',
+        toc: '目录',
+        back: '返回',
+        backToTop: '回到顶部',
+        close: '关闭',
+        previous: '上一张',
+        next: '下一张',
       },
       dateFormat: { year: 'numeric', month: '2-digit', day: '2-digit' },
     },
@@ -146,6 +166,12 @@ const config = {
    * the system font. Browsers that don't report this, like Safari, always get the web font.
    */
   webFont: { css: '/fonts/misans/misans.css', skipWhenSaving: true } as { css: string; skipWhenSaving: boolean } | null,
+
+  /**
+   * Table of contents on posts and projects. It shows the two highest heading levels used in
+   * the entry, and only when the entry has at least `minHeadings` of them.
+   */
+  toc: { minHeadings: 3 },
 
   /** Number of posts listed on the home page */
   homePostCount: 8,

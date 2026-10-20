@@ -2,7 +2,9 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
-import { splitId } from '../../../lib/i18n';
+import Toc from '../../../components/Toc.astro';
+import EntryNav from '../../../components/EntryNav.astro';
+import { href, splitId } from '../../../lib/i18n';
 import { translationsOf } from '../../../lib/content';
 import site from '../../../site.config';
 
@@ -16,11 +18,11 @@ export async function getStaticPaths() {
 }
 const { project } = Astro.props;
 const { locale } = splitId(project.id);
-const { Content } = await render(project);
+const { Content, headings } = await render(project);
 const alternates = await translationsOf('projects', project);
 ---
 <Base locale={locale} title={project.data.title} description={project.data.summary} alternates={alternates}>
-  <article data-pagefind-body>
+  <article class="entry" data-pagefind-body>
     <header class="post-header">
       <h1>{project.data.title}</h1>
       <div class="meta" data-pagefind-ignore>
@@ -28,9 +30,11 @@ const alternates = await translationsOf('projects', project);
         <span>{project.data.date.getUTCFullYear()}</span>
       </div>
     </header>
+    <Toc locale={locale} headings={headings} />
     {project.data.cover && (
-      <p><Image src={project.data.cover} alt={project.data.coverAlt ?? project.data.title} widths={[480, 800, 1200]} sizes="(max-width: 44rem) 100vw, 42rem" /></p>
+      <p class="prose"><Image src={project.data.cover} alt={project.data.coverAlt ?? project.data.title} widths={[480, 800, 1200]} sizes="(max-width: 44rem) 100vw, 42rem" /></p>
     )}
     <div class="prose"><Content /></div>
   </article>
+  <EntryNav locale={locale} fallback={href(locale, '/projects/')} />
 </Base>

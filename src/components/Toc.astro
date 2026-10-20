@@ -1,0 +1,85 @@
+---
+// Table of contents for an entry page, built from the headings Astro extracts when rendering.
+// Shows the two highest heading levels the entry uses; hidden when there are too few headings
+// (site.toc.minHeadings). Wide screens: a sticky panel beside the text. Narrow: a folded list above it.
+import type { MarkdownHeading } from 'astro';
+import site, { type Locale } from '../site.config';
+import { t } from '../lib/i18n';
+
+interface Props { locale: Locale; headings: MarkdownHeading[] }
+const { locale, headings } = Astro.props;
+const L = t(locale);
+
+const top = Math.min(...headings.map((h) => h.depth));
+const items = headings.filter((h) => h.depth <= top + 1);
+const show = items.length >= site.toc.minHeadings;
+---
+{show && (
+  <nav class="toc" aria-label={L.ui.toc} data-pagefind-ignore="all">
+    <details open>
+      <summary>{L.ui.toc}</summary>
+      <ol>
+        {items.map((h) => (
+          <li class:list={{ sub: h.depth > top }}><a href={`#${h.slug}`}>{h.text}</a></li>
+        ))}
+      </ol>
+    </details>
+  </nav>
+)}
+
+<script>
+  // Mark the heading currently in view, and fold the list after a tap on narrow screens
+  const toc = document.querySelector<HTMLElement>('.toc');
+  if (toc) {
+    const links = [...toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
+    const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+    const targets = [...byId.keys()].map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
+    let current: HTMLAnchorElement | undefined;
+    const mark = (el: HTMLElement) => {
+      current?.removeAttribute('aria-current');
+      current = byId.get(el.id);
+      current?.setAttribute('aria-current', 'location');
+    };
+    // Current = the last heading above the top quarter of the viewport
+    const update = () => {
+      const line = innerHeight / 4;
+      let best = targets[0];
+      for (const el of targets) if (el.getBoundingClientRect().top <= line) best = el;
+      if (best) mark(best);
+    };
+    addEventListener('scroll', update, { passive: true });
+    update();
+    // Folded on narrow screens (and after a tap there); always open in the side panel
+    const details = toc.querySelector('details')!;
+    const wide = matchMedia('(min-width: 76rem)');
+    const fold = () => { details.open = wide.matches; };
+    fold();
+    wide.addEventListener('change', fold);
+    toc.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a') && !wide.matches) details.open = false;
+    });
+  }
+</script>
+
+<style is:global>
+  .toc { font-size: 0.875rem; line-height: 1.5; }
+  .toc summary { cursor: pointer; color: var(--muted); font-weight: 600; }
+  .toc ol { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .toc li { margin: 0.35em 0; }
+  .toc li.sub { padding-left: 1em; }
+  .toc a { color: var(--muted); text-decoration: none; }
+  .toc a:hover, .toc a[aria-current] { color: var(--fg); }
+  .toc a[aria-current] { font-weight: 600; }
+
+  /* Narrow: folded list above the text */
+  .toc { margin: 0 0 1.5rem; padding: 0.6rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); }
+
+  /* Wide: the entry stays centred and the list sits in the margin on the right, following the scroll */
+  @media (min-width: 76rem) {
+    .entry { position: relative; }
+    .toc { position: absolute; top: 0; bottom: 0; left: calc(100% + 2.5rem); width: 14rem; margin: 0; padding: 0; border: 0; }
+    .toc details { position: sticky; top: 4.5rem; max-height: calc(100vh - 6rem); overflow-y: auto; }
+    .toc summary { list-style: none; pointer-events: none; }
+    .toc summary::-webkit-details-marker { display: none; }
+  }
+</style>

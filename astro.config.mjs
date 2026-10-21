@@ -19,6 +19,10 @@ export default defineConfig({
     }),
     search(site),
   ],
+  image: {
+    // Sharp with WebP settings per source type (site.imageQuality)
+    service: { entrypoint: './src/lib/image-service.ts' },
+  },
   vite: {
     // File watching by polling, for setups where file-change events don't reach the dev server (some Docker mounts)
     server: { watch: { usePolling: process.env.WATCH_POLLING === 'true' } },

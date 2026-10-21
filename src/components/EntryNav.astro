@@ -1,5 +1,6 @@
 ---
-// Floating "back" and "back to top" buttons for entry pages (posts, projects).
+// Floating buttons for entry pages (posts, projects): back, back to top and, on narrow screens
+// when the page has a table of contents, the list button that opens it (see Toc.astro).
 // Back returns to the page the visitor came from when it is on this site, otherwise to `fallback`
 // (the section's list page), which is also what the link does without JS.
 import type { Locale } from '../site.config';
@@ -11,6 +12,7 @@ const { locale, fallback } = Astro.props;
 const L = t(locale);
 ---
 <div class="entry-nav" data-pagefind-ignore="all">
+  <button class="icon-btn toc-btn" type="button" id="entry-toc" aria-label={L.ui.toc} title={L.ui.toc} aria-expanded="false" aria-controls="toc" hidden><Icon name="list" /></button>
   <a class="icon-btn" href={fallback} id="entry-back" aria-label={L.ui.back} title={L.ui.back}><Icon name="arrow-left" /></a>
   <a class="icon-btn" href="#top" id="entry-top" aria-label={L.ui.backToTop} title={L.ui.backToTop} hidden><Icon name="arrow-up" /></a>
 </div>
@@ -42,10 +44,10 @@ const L = t(locale);
   .entry-nav .icon-btn {
     width: 2.5rem; height: 2.5rem; padding: 0; align-items: center; justify-content: center;
     border: 1px solid var(--border); border-radius: 50%;
-    background: var(--bg); color: var(--muted);
+    background: var(--bg); color: var(--muted); cursor: pointer;
     box-shadow: 0 1px 4px oklch(0% 0 0 / 0.08);
   }
-  .entry-nav .icon-btn:hover { color: var(--fg); border-color: var(--muted); }
+  .entry-nav .icon-btn:hover, .entry-nav .icon-btn[aria-expanded="true"] { color: var(--fg); border-color: var(--muted); }
   .entry-nav .icon-btn .icon { width: 1.25em; height: 1.25em; }
   .entry-nav [hidden] { display: none; }
   @media print { .entry-nav { display: none; } }

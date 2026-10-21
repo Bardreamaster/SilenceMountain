@@ -30,7 +30,7 @@ const tags = [...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)! |
         <li class="project" data-tags={p.data.tags.map(filterKey).join(' ')}>
           {p.data.cover && (
             <a href={link} tabindex="-1">
-              <Image src={p.data.cover} alt={p.data.coverAlt ?? p.data.title} widths={[480, 800]} sizes="(max-width: 44rem) 100vw, 42rem" />
+              <Image src={p.data.cover} alt={p.data.coverAlt ?? p.data.title} widths={[480, 800, 1200, 1600]} sizes="(max-width: 44rem) 100vw, 42rem" />
             </a>
           )}
           <h2><a href={link}>{p.data.title}</a></h2>

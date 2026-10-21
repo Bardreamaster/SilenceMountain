@@ -82,7 +82,7 @@ const items = await Promise.all(
                     <div class="life-photos">
                       {d.photos.map((p, i) => (
                         <a href={large[i].src}>
-                          <Image src={p} alt={`${d.title} ${i + 1}`} width={240} height={240} fit="cover" />
+                          <Image src={p} alt={`${d.title} ${i + 1}`} width={240} height={240} fit="cover" densities={[1, 2]} />
                         </a>
                       ))}
                     </div>

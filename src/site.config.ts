@@ -173,8 +173,21 @@ const config = {
    */
   toc: { minHeadings: 3 },
 
+  /**
+   * Compression of the images Astro generates (all served as WebP; see src/lib/image-service.ts).
+   * `photo` is for JPEG and other sources: lossy, quality 0-100 (Sharp's default is 80, which
+   * smears fine detail). `graphic` is for PNG sources such as screenshots and diagrams: lossless
+   * keeps text and edges crisp and is often smaller than lossy for them. `effort` 0-6 trades
+   * build time for smaller files. Changing this needs the image cache cleared
+   * (node_modules/.astro) before the next build.
+   */
+  imageQuality: {
+    photo: { quality: 90, effort: 6 },
+    graphic: { lossless: true, effort: 6 },
+  },
+
   /** Number of posts listed on the home page */
-  homePostCount: 8,
+  homePostCount: 7,
 
   /** Shiki themes for code blocks (https://shiki.style/themes) */
   codeTheme: { light: 'github-light', dark: 'github-dark' },
